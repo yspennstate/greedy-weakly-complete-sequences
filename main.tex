@@ -32,9 +32,10 @@ $a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul 
 this sequence: after $n+1$ initial terms it consists of blocks of $n-1$ terms, each block a translate of the set
 $\{0,1,\dots,n-1\}\setminus\{d-1\}$, and the translations grow geometrically with ratio $n$. Knapp and Paul proved the
 case $d=1$, and Fox and Knapp proved the cases $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which
-completes the proof of the conjecture. The proof follows the set of subset sums through one block at a time and reduces
-the induction step to a condition that does not depend on the block index. For $n\ge 20$ the condition is verified by
-hand, and for $n\le 19$ by a finite computation.
+completes the proof of the conjecture. The proof shows that at the end of every block the set of subset sums is
+$\{0,n\}\cup[n+d,\,T-n-d]\cup\{T-n,T\}$, where $T$ is the sum of the terms so far, and reduces the induction step to
+an inclusion between sets of sums of distinct elements of $\{0,\dots,n-1\}\setminus\{d-1\}$. For $n\ge 20$ the
+inclusion is proved directly, and for $n\le 19$ it is checked by computer.
 \end{abstract}
 
 \noindent\textbf{Mathematics Subject Classification (2020):} 11B13, 11B83.
@@ -73,7 +74,7 @@ description is given. Linz and Jones \cite{LJ} use these greedy sequences as exa
 but not $2$-complete, since no term is a sum of distinct smaller terms. We prove the remaining cases.
 
 \begin{theorem}\label{thm:main}
-\Cref{conj:KP} holds for all $n\ge 2$ and $n-7\le d\le n-1$. Together with \cite[Theorem~1]{FK} and
+\Cref{conj:KP} holds for all $n\ge 2$ and $\max(1,n-7)\le d\le n-1$. Together with \cite[Theorem~1]{FK} and
 \cite[Theorem~2]{KP}, it holds for all $1\le d<n$.
 \end{theorem}
 
@@ -93,18 +94,29 @@ each block listed in increasing order. This is the conjecture. Indeed $\sum_{w\i
 $M_{i+1}+c=n(M_i+c)$, and therefore $M_i=(M_1+c)n^{i-1}-c$. A direct expansion gives
 $(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S$, while $\{n\}\cup\{C,\dots,C+n-1\}=I\cup J$.
 
-The proof of Fox and Knapp also follows the subset sums of the sequence. Here the induction step is reduced to the
-inclusion \eqref{eq:gap} below, a condition on the sets of sums of $r$ distinct elements of $W$. It involves neither
-the block index nor the terms already chosen.
+Knapp and Paul \cite{KP} and Fox and Knapp \cite{FK} argue by induction on the blocks, and so do we. Fox and Knapp
+write the integers below the next block as a union of intervals $D_m$, each made of the sums of $m$ terms of the
+current block and one integer that is already a sum of earlier terms. For $2\le d\le n-8$ they show that $D_m$ and
+$D_{m+1}$ are contiguous for $2\le m\le n-4$, and they represent the integers between the last two of these intervals
+by adding the sum of all earlier terms to sums of terms of the current block \cite[Section~3]{FK}. At the end of that
+section they note that for $n<d+5$ gaps already appear between the sets of sums of terms of the first block, so that
+the integers in these gaps need explicit representations, and that they expect the formula to hold for all $d<n$
+with a more refined analysis. We give these representations for every block and every number of new terms at once.
+For a finite set $A$ of positive integers let $\Sigma(A)$ be the set of sums of its subsets, the empty sum $0$
+included, and let $T$ be the sum of the elements of $A$. We show that at the end of every block $\Sigma(A)=R_T$,
+where for an integer $T\ge 2C$
+\begin{equation}\label{eq:RT}
+R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\}
+\end{equation}
+and $[x,y]$ denotes the set of integers $m$ with $x\le m\le y$ (\Cref{lem:start,lem:step}). The induction step then
+reduces to the inclusion \eqref{eq:gap} between sets of sums of distinct elements of $W$, which involves neither the
+block index nor the terms already chosen. For $n\ge 20$ and $d\ge n-7$ the inclusion is proved in
+\Cref{lem:analytic}, and for $n\le 19$ it is checked by computer.
 
 \section{The subset sums at the end of a block}
 
-For a finite set $A$ of positive integers write $\Sigma(A)$ for the set of sums of its subsets, the empty sum $0$
-included. If $A$ has total $T$, then $\Sigma(A)$ is symmetric under $x\mapsto T-x$. For an integer $T\ge 2C$ put
-\[
-R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\},
-\]
-where $[x,y]$ denotes the set of integers $x\le m\le y$.
+Let $\Sigma(A)$, $T$, $[x,y]$ and $R_T$ be as in \eqref{eq:RT} and the sentences around it. The set $\Sigma(A)$ is
+symmetric under $x\mapsto T-x$.
 
 \begin{lemma}\label{lem:start}
 The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
@@ -144,6 +156,9 @@ omits only one integer of $[0,n-1]$. Starting from the $r$ smallest elements and
 $r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or $2$.
 \end{proof}
 
+For $d\ge 2$ a precise description of the sets of sums of $r$ distinct elements of $W$ is given by Fox and Knapp
+\cite[Section~2]{FK}.
+
 The induction step rests on the following condition. For $0\le r<K$ consider
 \begin{equation}\label{eq:gap}
 [h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr).
@@ -175,10 +190,11 @@ $[l(r)+C,\,h(r)+T-C]$. Thus the sums with exactly $r$ new terms and a middle ele
 \[
 D_r=[rM+l(r)+C,\ (r+1)M+h(r)-1].
 \]
-The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
+These are the intervals $D_m$ of \cite[Section~3]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
 $rM+Q_r+\{T-n,T\}=(r+1)M+Q_r+\{d-1,C-1\}$. The integers strictly between $D_r$ and $D_{r+1}$ form the set
 $(r+1)M+[h(r),l(r+1)+C-1]$. By \eqref{eq:gap} this set is contained in
-$(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. Hence $\Sigma(A')$ contains the
+$(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. For $r=K-1$ this is the
+representation used in \cite[Section~3]{FK}. Hence $\Sigma(A')$ contains the
 interval from $\min D_0=C$ to $\max D_K=(K+1)M+h(K)-1=T'-C$. Every element of $\Sigma(A')$ other than those in
 $R_T$ is at least $M>C$, so the only elements of $\Sigma(A')$ below $C$ are $0$ and $n$. By the symmetry
 $x\mapsto T'-x$ of $\Sigma(A')$, the only elements above $T'-C$ are $T'-n$ and $T'$. Therefore
@@ -232,8 +248,7 @@ For $2\le n\le 19$ we check \eqref{eq:gap} by computer for every $1\le d<n$ and 
 the sets $Q_0,\dots,Q_K$ are computed by the update $Q_j\leftarrow Q_j\cup(w+Q_{j-1})$, applied for each $w\in W$
 with $j$ decreasing, starting from $Q_0=\{0\}$ and $Q_j=\varnothing$ for $j>0$. Then every integer between $h(r)$ and
 $l(r+1)+C-1$ is tested against the four translates in \eqref{eq:gap}. Each of the $171$ pairs $(n,d)$ passes. This is
-a finite computation that covers the whole induction, since \eqref{eq:gap} does not involve $i$. The same program
-also checks \eqref{eq:gap} directly for all $1\le d<n\le 31$ and for $n-7\le d\le n-1$ with $32\le n\le 80$.
+a finite computation that covers the whole induction, since \eqref{eq:gap} depends only on $n$, $d$ and $r$.
 
 \begin{proof}[Proof of \Cref{thm:main}]
 For $n\ge 20$ and $n-7\le d\le n-1$, \Cref{lem:analytic} and the reflection give \eqref{eq:gap} for all $0\le r<K$.
@@ -243,12 +258,7 @@ pairs are covered by \cite[Theorem~2]{KP} for $d=1$ and \cite[Theorem~1]{FK} for
 
 \begin{remark}
 The argument of \Cref{lem:step} works for every $1\le d<n$; only the verification of \eqref{eq:gap} uses the
-restriction on $d$. As further checks, the program computes the greedy sequence directly for all $1\le d<n\le 20$ and
-compares it with \eqref{eq:seq} through the first term after the third block. It also starts one block from the set
-$R_T$ for $400$ consecutive values of $T$, including values that do not occur in the sequence, for all $1\le d<n\le
-12$, and finds the terms and the new set of sums predicted by \Cref{lem:step}. It also replaces $d-1$ by $d$ in the definition of $W$, and
-separately drops the translate $d-1$ from \eqref{eq:gap}. With either change \eqref{eq:gap} fails for every pair with
-$3\le n\le 31$ to which the change applies.
+restriction on $d$.
 \end{remark}
 
 \section*{Acknowledgments and funding}
@@ -273,13 +283,14 @@ The author holds equity in Heights Labs and Convex Nexus Capital and has a manag
 
 The reduction to \eqref{eq:gap} and its verification were developed with AI systems (OpenAI Codex and Anthropic Claude
 agents working under the author's direction), which also drafted the text and wrote the computer checks. The
-conjecture and its formula are due to Knapp and Paul \cite{KP}, and the cases $2\le d\le n-8$ to Fox and Knapp
-\cite{FK}. The author directed the work and is responsible for the content of the paper and for decisions concerning its
+conjecture and its formula are due to Knapp and Paul \cite{KP}, who proved the case $d=1$ \cite[Theorem~2]{KP}, and
+the cases $2\le d\le n-8$ to Fox and Knapp \cite{FK}, whose intervals $D_m$ and representation of the integers below
+a block are used in \Cref{lem:step}. The author directed the work and is responsible for the content of the paper and for decisions concerning its
 dissemination.
 
 \section*{Data and code availability}
 
-The Python program that verifies \eqref{eq:gap} and carries out the checks described in the remark above is available at
+The Python program that verifies \eqref{eq:gap} for $2\le n\le 19$ is available at
 \url{https://github.com/yspennstate/greedy-weakly-complete-sequences/tree/v1.0}.
 
 \begin{thebibliography}{9}
