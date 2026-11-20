@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\providecommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+
+\title{Greedy weakly complete sequences with initial terms $n$ and $n+d$}
+\author{Yitzchak Shmalo\\
+Einstein Institute of Mathematics, The Hebrew University of Jerusalem\\
+Givat Ram, Jerusalem, Israel}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fix integers $1\le d<n$ and let $a_1=n$, $a_2=n+d$. For $k\ge 2$ let $a_{k+1}$ be the least integer greater than
+$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul conjectured an explicit formula for
+this sequence: after $n+1$ initial terms it consists of blocks of $n-1$ terms, each block a translate of the set
+$\{0,1,\dots,n-1\}\setminus\{d-1\}$, and the translations grow geometrically with ratio $n$. Knapp and Paul proved the
+case $d=1$, and Fox and Knapp proved the cases $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which
+completes the proof of the conjecture. The proof follows the set of subset sums through one block at a time and reduces
+the induction step to a condition that does not depend on the block index. For $n\ge 20$ the condition is verified by
+hand, and for $n\le 19$ by a finite computation.
+\end{abstract}
+
+\noindent\textbf{Mathematics Subject Classification (2020):} 11B13, 11B83.
+
+\noindent\textbf{Keywords:} weakly complete sequence, greedy algorithm, subset sums.
+
+\section{Introduction}
+
+An increasing sequence of positive integers is \emph{weakly complete} if every sufficiently large integer is a sum of
+distinct terms of the sequence \cite{Hon,KP}. Given two initial terms, the greedy algorithm produces such a sequence:
+once $a_1<\dots<a_k$ are known, $a_{k+1}$ is the least integer greater than $a_k$ that is not a sum of distinct terms
+among $a_1,\dots,a_k$. Every integer greater than $a_2$ is then a sum of distinct terms. For example, the initial
+terms $5,8$ give
+\[
+5,\ 8,\ 9,\ 10,\ 11,\ 12,\ 48,\ 49,\ 51,\ 52,\ 248,\ 249,\ 251,\ 252,\ 1248,\ 1249,\ 1251,\ 1252,\ \dots
+\]
+(see \cite{FK}). Knapp and Paul \cite{KP} determined these sequences for several families of initial terms and
+observed that the initial terms are best written as $n$ and $n+d$. For $d<n$ they made the following conjecture
+\cite[Conjecture~B]{KP}.
+
+\begin{conjecture}[Knapp and Paul]\label{conj:KP}
+Let $1\le d<n$ and let $(a_k)$ be the greedy sequence with $a_1=n$ and $a_2=n+d$. Then the set of its terms is
+\[
+I\cup J\cup\bigcup_{i\ge 1}\bigl(an^i+S\bigr),
+\]
+where $I=\{n,n+d\}$, $J=\{n+d+1,\dots,2n+d-1\}$,
+\[
+a=\frac{3n^2+(2d-3)n-4d+2}{2(n-1)},\qquad c=\frac{n^2-n-2(d-1)}{2(n-1)},
+\]
+and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
+\end{conjecture}
+
+The case $d=1$ is \cite[Theorem~2]{KP}, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
+\cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the sequence is entry A072134 of the OEIS \cite{OEIS}, where the same
+description is given. We prove the remaining cases.
+
+\begin{theorem}\label{thm:main}
+\Cref{conj:KP} holds for all $n\ge 2$ and $n-7\le d\le n-1$. Together with \cite[Theorem~1]{FK} and
+\cite[Theorem~2]{KP}, it holds for all $1\le d<n$.
+\end{theorem}
+
+It is convenient to state the conclusion in a different form. Put
+\[
+C=n+d,\qquad W=\{0,1,\dots,n-1\}\setminus\{d-1\},\qquad K=|W|=n-1,
+\]
+and define
+\begin{equation}\label{eq:M}
+M_1=n+nC+\binom n2-C+1,\qquad M_{i+1}=nM_i+\binom n2-(d-1)\quad(i\ge 1).
+\end{equation}
+We show that the sequence is
+\begin{equation}\label{eq:seq}
+n,\ C,\ C+1,\ \dots,\ C+n-1,\ \text{followed by the blocks } M_1+W,\ M_2+W,\ \dots,
+\end{equation}
+each block listed in increasing order. This is the conjecture. Indeed $\sum_{w\in W}w=\binom n2-(d-1)=(n-1)c$, so
+$M_{i+1}+c=n(M_i+c)$, and therefore $M_i=(M_1+c)n^{i-1}-c$. A direct expansion gives
+$(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S$, while $\{n\}\cup\{C,\dots,C+n-1\}=I\cup J$.
+
+The proof of Fox and Knapp also follows the subset sums of the sequence. Here the induction step is reduced to the
+inclusion \eqref{eq:gap} below, a condition on the sets of sums of $r$ distinct elements of $W$. It involves neither
+the block index nor the terms already chosen.
+
+\section{The subset sums at the end of a block}
+
+For a finite set $A$ of positive integers write $\Sigma(A)$ for the set of sums of its subsets, the empty sum $0$
+included. If $A$ has total $T$, then $\Sigma(A)$ is symmetric under $x\mapsto T-x$. For an integer $T\ge 2C$ put
+\[
+R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\},
+\]
+where $[x,y]$ denotes the set of integers $x\le m\le y$.
+
+\begin{lemma}\label{lem:start}
+The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
+$T_0=n+nC+\binom n2$ is their total, then $\Sigma(A_0)=R_{T_0}$.
+\end{lemma}
+
+\begin{proof}
+Every sum of two or more distinct terms that includes a term at least $C$ is at least $C+n$. So for $C\le x\le
+C+n-1$ the only sums of earlier terms that are at most $x$ are $0$, $n$ and the single terms, and each such $x$ is
+chosen in turn.
+
+A sum using $r$ of the terms $C,\dots,C+n-1$ has the form $rC+q$, where $q$ is a sum of $r$ distinct elements of
+$\{0,\dots,n-1\}$. These $q$ fill the interval $[\binom r2,\binom r2+r(n-r)]$: from any $r$-subset other than the
+largest, some element can be raised by one without leaving $\{0,\dots,n-1\}$ or meeting another element. Write
+$l_r=rC+\binom r2$ and $u_r=l_r+r(n-r)$. Adding the optional term $n$, the sums with exactly $r$ terms from the interval
+form $[l_r,u_r]\cup[l_r+n,u_r+n]$. For $1\le r\le n-1$ we have $u_r-l_r\ge n-1$, so this union is the interval
+$[l_r,u_r+n]$. Moreover
+\[
+l_{r+1}-(u_r+n)-1=d-1-r(n-1-r)\le 0\qquad(1\le r\le n-2),
+\]
+because $r(n-1-r)\ge n-2\ge d-1$. So the bands for $1\le r\le n-1$ together form the interval $[l_1,u_{n-1}+n]$. Here
+$l_1=C$, and $u_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ contributes $\{0,n\}$, and $r=n$ contributes
+$\{T_0-n,T_0\}$.
+\end{proof}
+
+For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct elements of $W$, with $Q_0=\{0\}$, and let
+$l(r)=\min Q_r$ and $h(r)=\max Q_r$.
+
+\begin{lemma}\label{lem:Q}
+Any two consecutive elements of $Q_r$ differ by at most $2$.
+\end{lemma}
+
+\begin{proof}
+Let $B\subset W$ have $r$ elements and not be the set of the $r$ largest elements of $W$. Then some $b\in B$ has a
+successor $b'$ in $W$ that is not in $B$, and replacing $b$ by $b'$ raises the sum by $b'-b\in\{1,2\}$, since $W$
+omits only one integer of $[0,n-1]$. Starting from the $r$ smallest elements and repeating this, we reach the
+$r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or $2$.
+\end{proof}
+
+The induction step rests on the following condition. For $0\le r<K$ consider
+\begin{equation}\label{eq:gap}
+[h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr).
+\end{equation}
+When $h(r)>l(r+1)+C-1$ the left side is empty and there is nothing to check.
+
+\begin{lemma}\label{lem:step}
+Suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
+some point, let $T$ be their total, and suppose that $\Sigma(A)=R_T$, $T\ge 2C+1$ and that the largest element of $A$
+is less than $M=T-C+1$. Then the next $K$ terms of the sequence are the elements of $M+W$ in increasing order. The new
+total is $T'=T+KM+\sum_{w\in W}w$, and $\Sigma(A\cup(M+W))=R_{T'}$. Moreover $T'-C+1=nM+\binom n2-(d-1)$, and this
+number exceeds $M+n-1$.
+\end{lemma}
+
+\begin{proof}
+Since $T-C=M-1$, $T-n=M+d-1$ and $T=M+C-1\ge M+n$, the only element of $R_T$ in $[M,M+n-1]$ is $M+d-1$, and every
+integer in $[C,M-1]$ lies in $R_T$. Let $x$ be a new term in $[M,M+n-1]$. Then $x$ plus a positive element of $R_T$ is
+at least $M+n$, and the sum of two new terms is at least $2M>M+n-1$. So no new term creates a sum in
+$[M,M+n-1]$, and the greedy algorithm chooses every integer of $[M,M+n-1]$ other than $M+d-1$. These are the elements
+of $M+W$.
+
+Next we show that $\Sigma(A')=R_{T'}$, where $A'=A\cup(M+W)$. A subset of $A'$ that uses $r$ of the new terms has sum
+$rM+q+s$ with $q\in Q_r$ and $s\in R_T$. Hence
+\[
+\Sigma(A')=\bigcup_{r=0}^{K}\bigl(rM+Q_r+R_T\bigr).
+\]
+The interval $[C,T-C]$ contains at least two integers, so by \Cref{lem:Q} the set $Q_r+[C,T-C]$ is the interval
+$[l(r)+C,\,h(r)+T-C]$. Thus the sums with exactly $r$ new terms and a middle element of $R_T$ form the interval
+\[
+D_r=[rM+l(r)+C,\ (r+1)M+h(r)-1].
+\]
+The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
+$rM+Q_r+\{T-n,T\}=(r+1)M+Q_r+\{d-1,C-1\}$. The integers strictly between $D_r$ and $D_{r+1}$ form the set
+$(r+1)M+[h(r),l(r+1)+C-1]$. By \eqref{eq:gap} this set is contained in
+$(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. Hence $\Sigma(A')$ contains the
+interval from $\min D_0=C$ to $\max D_K=(K+1)M+h(K)-1=T'-C$. Every element of $\Sigma(A')$ other than those in
+$R_T$ is at least $M>C$, so the only elements of $\Sigma(A')$ below $C$ are $0$ and $n$. By the symmetry
+$x\mapsto T'-x$ of $\Sigma(A')$, the only elements above $T'-C$ are $T'-n$ and $T'$. Therefore
+$\Sigma(A')=R_{T'}$.
+
+Finally, $T'-C+1=M+KM+\sum_{w\in W}w=nM+\binom n2-(d-1)$, which exceeds $M+n-1$ because $M\ge n$.
+\end{proof}
+
+\begin{proof}[Proof of \eqref{eq:seq}, assuming \eqref{eq:gap}]
+After the first $n+1$ terms, \Cref{lem:start} shows that the hypotheses of \Cref{lem:step} hold with
+$T=T_0$ and $M=T_0-C+1=M_1$; here $T_0-2C\ge 1$ and $M_1-(C+n-1)=(n-2)C+\binom n2+2>0$. \Cref{lem:step} gives the block $M_1+W$
+and again a state $\Sigma(A)=R_T$ with $T$ larger and with the next value of $M$ equal to $M_2$, which exceeds the last
+term. After the block, every integer from $M+n$ to the next $M$ minus one lies in $R_{T'}$, so no term is chosen
+there, and the block beginning at the next $M$ follows. Induction on $i$ gives \eqref{eq:seq}, with the recurrence
+\eqref{eq:M}.
+\end{proof}
+
+\section{Verification of the condition}
+
+Write $\sigma=\sum_{w\in W}w$. Taking complements $B\mapsto W\setminus B$ shows that $Q_{K-j}=\sigma-Q_j$ for
+$0\le j\le K$, so that $h(K-1-r)=\sigma-l(r+1)$ and $l(K-r)=\sigma-h(r)$. Let $r'=K-1-r$ and consider the reflection
+$\rho(x)=\sigma+C-1-x$. It maps the left side $[h(r),\,l(r+1)+C-1]$ of \eqref{eq:gap} onto
+$[h(r'),\,l(r'+1)+C-1]$, the left side of \eqref{eq:gap} for $r'$. Using $C-d=n$, it maps the four translates on the
+right side as follows:
+\begin{gather*}
+\rho(Q_r+d-1)=Q_{r'+1}+n,\qquad \rho(Q_r+C-1)=Q_{r'+1},\\
+\rho(Q_{r+1})=Q_{r'}+C-1,\qquad \rho(Q_{r+1}+n)=Q_{r'}+d-1.
+\end{gather*}
+Hence \eqref{eq:gap} for $r$ and for $K-1-r$ are equivalent, and it is enough to prove \eqref{eq:gap} for
+$r\le (K-1)/2$, that is, for $s=r+1\le n/2$.
+
+\begin{lemma}\label{lem:analytic}
+If $n\ge 20$ and $n-7\le d\le n-1$, then \eqref{eq:gap} holds for $0\le r\le (K-1)/2$.
+\end{lemma}
+
+\begin{proof}
+For $r=0$ the left side of \eqref{eq:gap} is $[0,C-1]$, since $l(1)=0$. The set $W\cup(n+W)$ is $[0,2n-1]$ with
+$d-1$ and $n+d-1=C-1$ removed, and these two numbers form $Q_0+\{d-1,C-1\}$.
+
+Let $2\le s=r+1\le n/2$. Since $d\ge n-7$, the set $W$ contains $[0,d-2]$, which has $d-1\ge n-8$ elements, and
+$n-8\ge n/2\ge s$ because $n\ge 16$.
+Sums of $s$ distinct elements of $[0,d-2]$ fill the interval $[\binom s2,\binom s2+s(d-1-s)]$, by the argument in the
+proof of \Cref{lem:start}. In particular $l(s)=\binom s2$. The function $s\mapsto s(n-8-s)$ is concave, and at
+$s=2$ and $s=n/2$ it equals $2n-20$ and $\tfrac n2(\tfrac n2-8)$, both at least $n$ when $n\ge 20$. Hence
+$s(d-1-s)\ge n$, and $Q_s\cup(n+Q_s)$ contains $[l(s),l(s)+2n]$, which contains $[l(s),l(s)+C-1]$ because $C-1\le
+2n-2$. Finally $h(s-1)\ge 1+2+\dots+(s-1)=l(s)$, since $W$ contains $1,\dots,s-1$. So the left side of
+\eqref{eq:gap} lies in $Q_{r+1}+\{0,n\}$.
+\end{proof}
+
+For $2\le n\le 19$ we check \eqref{eq:gap} by computer for every $1\le d<n$ and every $0\le r<K$. For each $(n,d)$
+the sets $Q_0,\dots,Q_K$ are computed by the update $Q_j\leftarrow Q_j\cup(w+Q_{j-1})$, applied for each $w\in W$
+with $j$ decreasing, starting from $Q_0=\{0\}$ and $Q_j=\varnothing$ for $j>0$. Then every integer between $h(r)$ and
+$l(r+1)+C-1$ is tested against the four translates in \eqref{eq:gap}. Each of the $171$ pairs $(n,d)$ passes. This is
+a finite computation that covers the whole induction, since \eqref{eq:gap} does not involve $i$. The same program
+also checks \eqref{eq:gap} directly for all $1\le d<n\le 31$ and for $n-7\le d\le n-1$ with $32\le n\le 80$.
+
+\begin{proof}[Proof of \Cref{thm:main}]
+For $n\ge 20$ and $n-7\le d\le n-1$, \Cref{lem:analytic} and the reflection give \eqref{eq:gap} for all $0\le r<K$.
+For $n\le 19$ the computation gives it. In both cases \eqref{eq:seq} holds, which is the conjecture. The remaining
+pairs are covered by \cite[Theorem~2]{KP} for $d=1$ and \cite[Theorem~1]{FK} for $2\le d\le n-8$.
+\end{proof}
+
+\begin{remark}
+The argument of \Cref{lem:step} works for every $1\le d<n$; only the verification of \eqref{eq:gap} uses the
+restriction on $d$. As further checks, the program computes the greedy sequence directly for all $1\le d<n\le 20$ and
+compares it with \eqref{eq:seq} through the first term after the third block. It also starts one block from the set
+$R_T$ for $400$ consecutive values of $T$, including values that do not occur in the sequence, for all $1\le d<n\le
+12$, and finds the terms and the new set of sums predicted by \Cref{lem:step}. It also replaces $d-1$ by $d$ in the definition of $W$, and
+separately drops the translate $d-1$ from \eqref{eq:gap}. With either change \eqref{eq:gap} fails for every pair with
+$3\le n\le 31$ to which the change applies.
+\end{remark}
+
+\section*{Acknowledgments and funding}
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math
+Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent
+memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results,
+coordinate who works on what, and audit each other's work. For more on the Brain and Math Brain, see the Math Brain
+paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework
+repository~\cite{BrainFramework}.
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European
+Union's Horizon Europe research and innovation programme (grant agreement No.\ 101041711). It was also supported by the Simons
+Foundation (as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning), by Heights Labs, by
+Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+
+\section*{Declaration of competing interest}
+
+The author holds equity in Heights Labs and Convex Nexus Capital and has a management role at Convex Nexus Capital.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+
+The reduction to \eqref{eq:gap} and its verification were developed with AI systems (OpenAI Codex and Anthropic Claude
+agents working under the author's direction), which also drafted the text and wrote the computer checks. The
+conjecture and its formula are due to Knapp and Paul \cite{KP}, and the cases $2\le d\le n-8$ to Fox and Knapp
+\cite{FK}. The author directed the work and is responsible for the content of the paper and for decisions concerning its
+dissemination.
+
+\section*{Data and code availability}
+
+The Python program that verifies \eqref{eq:gap} and carries out the checks described in the remark above is available at
+\url{https://github.com/yspennstate/greedy-weakly-complete-sequences/tree/v1.0}.
+
+\begin{thebibliography}{9}
+
+\bibitem{FK}
+A.~Fox and M.~P.~Knapp,
+\emph{A note on weakly complete sequences},
+J.\ Integer Seq.\ \textbf{16} (2013), Article 13.6.2.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL16/Knapp/knapp5.html}
+
+\bibitem{Hon}
+R.~Honsberger,
+\emph{Mathematical Gems III},
+Mathematical Association of America, 1985.
+
+\bibitem{KP}
+M.~P.~Knapp and M.~D.~Paul,
+\emph{On weakly complete sequences formed by the greedy algorithm},
+Integers \textbf{12} (2012), A4.
+\url{https://math.colgate.edu/~integers/m4/m4.pdf}
+
+\bibitem{OEIS}
+OEIS Foundation Inc.,
+\emph{The On-Line Encyclopedia of Integer Sequences}, sequence A072134, accessed November 2026.
+\url{https://oeis.org/A072134}
+
+\bibitem{MathBrainRepo}
+Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026.
+\url{https://github.com/yspennstate/math-brain-public}
+
+\bibitem{MathBrainPaper}
+Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026.
+\url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}
+
+\bibitem{BrainFramework}
+Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026.
+\url{https://github.com/yspennstate/brain-framework-public}
+
+\end{thebibliography}
+
+\end{document}
