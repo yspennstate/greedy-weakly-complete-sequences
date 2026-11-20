@@ -69,31 +69,29 @@ and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 \end{conjecture}
 
 The case $d=1$ is \cite[Theorem~2]{KP}, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
-\cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the terms agree with OEIS A072134 \cite{OEIS}, where the description \eqref{eq:seq} is
-stated without proof. Linz and Jones \cite{LJ} call a sequence $r$-complete if every sufficiently large integer is a
-sum of at least $r$ distinct terms. Since no term of a greedy sequence is a sum of distinct smaller terms, these
-sequences are not $2$-complete. We prove the remaining cases, by an argument that covers every
-$2\le d<n$.
+\cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the terms agree with OEIS A072134 \cite{OEIS}, where this description is
+stated without proof. We prove the remaining cases, by an argument that covers every $2\le d<n$.
 
 \begin{theorem}\label{thm:main}
 \Cref{conj:KP} holds for all $2\le d<n$. Together with \cite[Theorem~2]{KP}, it holds for all $1\le d<n$.
 \end{theorem}
 
-The cases $n-7\le d\le n-1$ are new; for $2\le d\le n-8$ the theorem is \cite[Theorem~1]{FK}.
-
 Put
 \[
 C=n+d,\qquad W=\{0,1,\dots,n-1\}\setminus\{d-1\},\qquad K=|W|=n-1,
 \]
+\[
+\sigma=\sum_{w\in W}w=\binom n2-(d-1),
+\]
 and define
 \begin{equation}\label{eq:M}
-M_1=n+nC+\binom n2-C+1,\qquad M_{i+1}=nM_i+\binom n2-(d-1)\quad(i\ge 1).
+M_1=n+nC+\binom n2-C+1,\qquad M_{i+1}=nM_i+\sigma\quad(i\ge 1).
 \end{equation}
 We show that the sequence is
 \begin{equation}\label{eq:seq}
 n,\ C,\ C+1,\ \dots,\ C+n-1,\ \text{followed by the blocks } M_1+W,\ M_2+W,\ \dots,
 \end{equation}
-each block listed in increasing order. This is the conjecture. Indeed $\sigma=\sum_{w\in W}w=\binom n2-(d-1)=(n-1)c$, so
+each block listed in increasing order. This is the conjecture. Indeed $\sigma=(n-1)c$, so
 $M_{i+1}+c=n(M_i+c)$, and therefore $M_i=(M_1+c)n^{i-1}-c$. A direct expansion gives
 $(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S$, while $\{n\}\cup\{C,\dots,C+n-1\}=I\cup J$.
 
@@ -102,56 +100,49 @@ for the set of integers $t$ with $x\le t\le y$. For a finite set $A$ of positive
 of sums of its subsets, the empty sum $0$ included. For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct
 elements of $W$, with $Q_0=\{0\}$, and let $l(r)=\min Q_r$ and $h(r)=\max Q_r$.
 
-For $2\le d\le n-8$ Fox and Knapp \cite[Section~3]{FK} argue as follows. Let $A$ be the set
-of the first $n+1$ terms, or of all terms up to the end of a block, let $T$ be its sum and put $M=T-C+1$; the next
-block is $M+W$. They cover the integers from $M+n$ to $nM+\sigma-1$ by three kinds of sums: the interval $D_r$ of sums of
-$r$ terms of $M+W$ and one integer of $[C,M-1]$; the sets $C_r=rM+[l(r),h(r)]$ and $n+C_r$, every integer of which
-is a sum of distinct terms; and the sums of $K-1$ terms of $M+W$ with $T-n$ or $T$. The bound $d\le n-8$ is used
-to make $D_r$ and $D_{r+1}$ contiguous for $2\le r\le K-3$; it comes from the case $d=2$, where $n\ge 10$ is
-needed for $D_2$ and $D_3$ to be contiguous. Fox and Knapp expect the formula to hold for all $d<n$, and suggest
-that there may be only finitely many triples $(n,d,m)$ for which $D_m$ and $D_{m+1}$ are not contiguous
-\cite[Section~3]{FK}. There are infinitely many: if
-$n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the integers of
-$3M+[h(2),\,l(3)+C-1]$ lie strictly between $D_2$ and $D_3$. For $n\ge 10$ and $d\le n-6$, in particular for
-$d=n-7$ and $d=n-6$, the intervals $D_r$ and $D_{r+1}$ are still contiguous for $2\le r\le K-3$
-(\Cref{rem:empty}), so for $n\ge 10$ these two values of $d$ lie outside the range of \cite[Theorem~1]{FK} although
-$D_r$ and $D_{r+1}$ are contiguous for $2\le r\le K-3$. For $d\in\{n-7,n-6\}$ and $n\le 9$, that is for $(n,d)$
-equal to $(8,2)$, $(9,2)$ or $(9,3)$, the intervals $D_2$ and $D_3$ are not contiguous: in the notation of
-\Cref{rem:empty}, $g(2)=n-9\le 0$.
+Fox and Knapp \cite[Section~3]{FK} argue as follows. Let $A$ be the set of the first $n+1$ terms, or of all terms up
+to the end of a block, let $T$ be its sum and put $M=T-C+1$; the next block is $M+W$. The sums of $r$ terms of $M+W$
+and one integer of $[C,M-1]$ fill the interval
+\[
+D_r=[\,rM+l(r)+C,\ (r+1)M+h(r)-1\,],
+\]
+and the argument needs $D_r\cup D_{r+1}$ to be an interval for $2\le r\le K-3$. The bound $d\le n-8$ comes from
+this requirement at $d=2$. Bounds on $d$ are also used for three pairs of sets lying between $D_1$ and $D_2$, and the
+first $n+1$ terms are treated for $d\le n-5$. For $n-5\le d\le n-1$ and $d\ge 4$ the requirement fails: the integers
+of $3M+[h(2),\,l(3)+C-1]$ lie strictly between $D_2$ and $D_3$ (\Cref{rem:empty}).
 
-We use instead that the set of subset sums is known exactly at the end of every block: $\Sigma(A)=R_T$, where
+Those integers are nevertheless sums of distinct terms. The integers strictly between $D_r$ and $D_{r+1}$ are those
+of $(r+1)M+[h(r),\,l(r+1)+C-1]$, and for $d\ge 2$ and $0\le r\le K-2$,
+\[
+l(r+1)\le h(r)\qquad\text{and}\qquad h(r+1)-l(r+1)\ge n-1 .
+\]
+So these integers lie in $(r+1)M+[l(r+1),h(r+1)]$ or in $n$ plus that interval. Every integer of
+$(r+1)M+[l(r+1),h(r+1)]$ is a sum of $r+1$ terms of the block, or of $r$ terms of the block and all earlier terms
+other than $n$, whose sum is $T-n$ (Fox and Knapp \cite[Section~3]{FK}; \Cref{lem:Cm}(a)). Adding the term $n$
+covers the second interval. The last gap, $r=K-1$, is the first one under the reflection $x\mapsto\sigma+C-1-x$
+(\Cref{sec:reflect}). This gives
+\begin{equation}\label{eq:gap}
+[h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K)
+\end{equation}
+for every $2\le d<n$, whether or not $D_r\cup D_{r+1}$ is an interval. At the end of every block
+$\Sigma(A)=R_T$, where
 \begin{equation}\label{eq:RT}
 R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\}
 \end{equation}
-(\Cref{lem:start,lem:step}). The integers strictly between $D_r$ and $D_{r+1}$ are those of
-$(r+1)M+[h(r),\,l(r+1)+C-1]$, the elements $0,n$ of $R_T$ contribute $(r+1)M+Q_{r+1}+\{0,n\}$ and the elements
-$T-n,T$ contribute $(r+1)M+Q_r+\{d-1,C-1\}$. The induction step therefore reduces to
-\begin{equation}\label{eq:gap}
-[h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K),
-\end{equation}
-in which neither $T$ nor $M$ appears. For $0\le r\le K-2$ and $d\ge 2$,
-\[
-l(r+1)\le h(r)\qquad\text{and}\qquad h(r+1)-l(r+1)\ge n-1,
-\]
-so the left side lies in $[l(r+1),\,h(r+1)+n]=[l(r+1),h(r+1)]\cup\bigl(n+[l(r+1),h(r+1)]\bigr)$, and the
-statement of Fox and Knapp on $C_{r+1}$, which in this notation reads
-$[l(r+1),h(r+1)]\subset Q_{r+1}\cup(Q_r+d-1)$, gives the inclusion (\Cref{lem:Cm}). Their derivation of that
-statement, from \cite[Lemma~2]{FK} and four identities, does not use $d\le n-8$; \Cref{lem:Cm}(a) gives a shorter
-proof. The case $r=K-1$ is the case $r=0$ under the reflection $x\mapsto\sigma+C-1-x$ (\Cref{sec:reflect}).
-Inclusion \eqref{eq:gap} holds for every $2\le d<n$ and $0\le r<K$, whether or not $D_r$ and $D_{r+1}$ are
-contiguous; for $2\le d\le n-8$ this gives a second proof of \cite[Theorem~1]{FK}.
+(\Cref{lem:start,lem:step}). With this description of the sums, \eqref{eq:gap} gives the next block, and induction on
+the blocks proves the conjecture.
 
 \section{The subset sums at the end of a block}
 
 For a finite set $A$ of positive integers with sum $T$, the set $\Sigma(A)$ is symmetric under $x\mapsto T-x$.
 
 \begin{lemma}\label{lem:start}
-The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
+Let $1\le d<n$. The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
 $T_0=n+nC+\binom n2$ is their sum, then $\Sigma(A_0)=R_{T_0}$.
 \end{lemma}
 
-The first statement and the intervals $[l_r,u_r]$ of the proof are in \cite[Section~3]{FK}, whose base step uses
-$d\le n-5$; the proof below holds for every $1\le d<n$.
+The first statement and the intervals $[l_r,u_r]$ of the proof are in \cite[Section~3]{FK}, where the base step
+requires $d\le n-5$.
 
 \begin{proof}
 Every sum of two or more distinct terms that includes a term at least $C$ is at least $C+n$. So for $C\le x\le
@@ -183,14 +174,11 @@ omits only one integer of $[0,n-1]$. Starting from the $r$ smallest elements and
 $r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or $2$.
 \end{proof}
 
-For $d\ge 2$ a precise description of the sets of sums of $r$ distinct elements of $W$ is given by Fox and Knapp
-\cite[Section~2]{FK}. When $h(r)>l(r+1)+C-1$, the left side of \eqref{eq:gap} is empty.
-
 \begin{lemma}\label{lem:step}
-Suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
+Let $1\le d<n$ and suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
 some point, let $T$ be the sum of these terms, and suppose that $\Sigma(A)=R_T$, $T\ge 2C+1$ and that the largest element of $A$
 is less than $M=T-C+1$. Then the next $K$ terms of the sequence are the elements of $M+W$ in increasing order. The new
-sum of the terms is $T'=T+KM+\sum_{w\in W}w$, and $\Sigma(A\cup(M+W))=R_{T'}$. Moreover $T'-C+1=nM+\binom n2-(d-1)$, and this
+sum of the terms is $T'=T+KM+\sigma$, and $\Sigma(A\cup(M+W))=R_{T'}$. Moreover $T'-C+1=nM+\sigma$, and this
 number exceeds $M+n-1$.
 \end{lemma}
 
@@ -211,7 +199,7 @@ $[l(r)+C,\,h(r)+T-C]$. Thus the sums with exactly $r$ new terms and an element o
 \[
 D_r=[rM+l(r)+C,\ (r+1)M+h(r)-1].
 \]
-These are the intervals $D_m$ of \cite[Section~3]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
+These are the intervals of \cite[Section~3]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
 $rM+Q_r+\{T-n,T\}=(r+1)M+Q_r+\{d-1,C-1\}$. The integers strictly between $D_r$ and $D_{r+1}$ form the set
 $(r+1)M+[h(r),l(r+1)+C-1]$. By \eqref{eq:gap} this set is contained in
 $(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. Hence $\Sigma(A')$ contains the
@@ -220,7 +208,7 @@ $R_T$ is at least $M>C$, so the only elements of $\Sigma(A')$ below $C$ are $0$ 
 $x\mapsto T'-x$ of $\Sigma(A')$, the only elements above $T'-C$ are $T'-n$ and $T'$. Therefore
 $\Sigma(A')=R_{T'}$.
 
-Finally, $T'-C+1=M+KM+\sum_{w\in W}w=nM+\binom n2-(d-1)$, which exceeds $M+n-1$ because $M\ge n$.
+Finally, $T'-C+1=M+KM+\sigma=nM+\sigma$, which exceeds $M+n-1$ because $M\ge n$.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{eq:seq}, assuming \eqref{eq:gap}]
@@ -245,9 +233,8 @@ right side as follows:
 \end{gather*}
 Hence \eqref{eq:gap} for $r$ and for $K-1-r$ are equivalent.
 
-Part (a) of the next lemma is, in the notation of Fox and Knapp, the statement that every integer of $C_m$ is a
-sum of distinct terms \cite[Section~3]{FK}; they derive it from \cite[Lemma~2]{FK} and four identities, an
-argument that does not use $d\le n-8$.
+Part (a) of the next lemma is the statement of Fox and Knapp that every integer of $mM+[l(m),h(m)]$ is a sum of
+distinct terms \cite[Section~3]{FK}, which they derive from \cite[Lemma~2]{FK}, written in terms of $W$.
 
 \begin{lemma}\label{lem:Cm}
 Let $2\le d<n$.
@@ -287,15 +274,23 @@ conjecture. The case $d=1$ is \cite[Theorem~2]{KP}.
 \end{proof}
 
 \begin{remark}\label{rem:empty}
-For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for
-$d=n-7$ and $d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
+The left side of \eqref{eq:gap} is the set of integers strictly between $D_r$ and $D_{r+1}$, shifted by $(r+1)M$, so
+$D_r\cup D_{r+1}$ is an interval exactly when it is empty. Fox and Knapp expect the formula to hold for all $d<n$,
+and suggest that there may be only finitely many triples $(n,d,r)$ for which $D_r\cup D_{r+1}$ is not an interval
+\cite[Section~3]{FK}. There are infinitely many: if $n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and
+$h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for $r=2$.
+
+For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $n\ge 10$ the
+values $d=n-7$ and $d=n-6$ lie outside the range of \cite[Theorem~1]{FK} although $D_r\cup D_{r+1}$ is an interval
+for $2\le r\le K-3$, and for them the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
 $g(r)=h(r)-l(r+1)-(C-1)$; by the reflection of \Cref{sec:reflect} it is enough to show $g(r)>0$ for
 $2\le r\le n/2-1$. If $e\le r$, then $e$ is not among the $r$ largest elements of $[0,n-1]$, so
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+2}2-e$, and $g(r)=r(n-2-r)-n-1$. If $r<e\le n-1-r$, then
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-1-r)-(n+d-1)\ge r(n-1-r)-(2n-7)$. If $e\ge n-r$,
 then $r\ge n-e\ge 7$, $h(r)=r(n-1)-\binom r2-e+(n-1-r)$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-2-r)-(2d-1)\ge
 r(n-2-r)-(2n-13)$; here $n\ge 2r+2\ge 16$. In each case the lower bound is a concave function of $r$, and it is
-positive at both ends of the range of $r$ allowed in that case when $n\ge 10$.
+positive at both ends of the range of $r$ allowed in that case when $n\ge 10$. For $(n,d)$ equal to $(8,2)$,
+$(9,2)$ or $(9,3)$ the first case gives $g(2)=n-9\le 0$, so $D_2\cup D_3$ is not an interval.
 \end{remark}
 
 \section*{Acknowledgments and funding}
@@ -321,8 +316,9 @@ The author holds equity in Heights Labs and Convex Nexus Capital and has a manag
 The reduction to \eqref{eq:gap} and its verification were developed with AI systems (OpenAI Codex and Anthropic Claude
 agents working under the author's direction), which also drafted the text and wrote the computer checks. The
 conjecture is due to Paul (see \cite[Conjecture~B]{KP}); Knapp and Paul proved the case $d=1$ \cite[Theorem~2]{KP},
-and Fox and Knapp proved the cases $2\le d\le n-8$ \cite{FK}. Their intervals $D_m$, sets $C_m$ and $n+C_m$, and sums
-with $T-n$ and $T$ are used in \Cref{lem:step}, and their statement on $C_m$ is \Cref{lem:Cm}(a). The author directed the work and is responsible for the content of the paper and for decisions concerning its
+and Fox and Knapp proved the cases $2\le d\le n-8$ \cite{FK}. Their intervals $D_r$, the sets $rM+[l(r),h(r)]$ and their
+translates by $n$, and the sums with $T-n$ and $T$ are used in \Cref{lem:step}, and their statement on these sets is
+\Cref{lem:Cm}(a). The author directed the work and is responsible for the content of the paper and for decisions concerning its
 dissemination.
 
 \section*{Data and code availability}
@@ -353,12 +349,6 @@ M.~P.~Knapp and M.~D.~Paul,
 \emph{On weakly complete sequences formed by the greedy algorithm},
 Integers \textbf{12} (2012), A4.
 \url{https://math.colgate.edu/~integers/m4/m4.pdf}
-
-\bibitem{LJ}
-W.~Linz and E.~Jones,
-\emph{$r$-completeness of sequences of positive integers},
-Integers \textbf{16} (2016), A59.
-\url{https://math.colgate.edu/~integers/q59/q59.pdf}
 
 \bibitem{OEIS}
 OEIS Foundation Inc.,
