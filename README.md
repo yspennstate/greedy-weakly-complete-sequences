@@ -27,7 +27,7 @@ C  greedy sequence, three blocks, n<=20: 190 pairs, failures 0
 D  one block from R_T, n<=12, 400 values of T each: 26400 cases, wrong terms 0 wrong sets 0
 ```
 
-Part A checks the inclusion (3) of the paper for all 1 <= d < n <= 31 and for n - 7 <= d <= n - 1 with
+Part A checks the inclusion (4) of the paper for all 1 <= d < n <= 31 and for n - 7 <= d <= n - 1 with
 32 <= n <= 80; the proof needs it only for n <= 19. Part B consists of two altered conditions that must fail, and do.
 Part C computes the greedy sequence directly and compares it with the formula. Part D starts one block from the set
 R_T for many values of T and compares the terms and the new set of sums with Lemma 2.3.

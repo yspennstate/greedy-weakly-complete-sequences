@@ -95,11 +95,11 @@ $M_{i+1}+c=n(M_i+c)$, and therefore $M_i=(M_1+c)n^{i-1}-c$. A direct expansion g
 $(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S$, while $\{n\}\cup\{C,\dots,C+n-1\}=I\cup J$.
 
 Knapp and Paul \cite{KP} and Fox and Knapp \cite{FK} argue by induction on the blocks, and so do we. Fox and Knapp
-write the integers below the next block as a union of intervals $D_m$, each made of the sums of $m$ terms of the
-current block and one integer that is already a sum of earlier terms. For $2\le d\le n-8$ they show that $D_m$ and
+cover the integers below the next block by intervals, among them intervals $D_m$, each made of the sums of $m$ terms
+of the current block and one integer that is already a sum of earlier terms. For $2\le d\le n-8$ they show that $D_m$ and
 $D_{m+1}$ are contiguous for $2\le m\le n-4$, and they represent the integers between the last two of these intervals
 by adding the sum of all earlier terms to sums of terms of the current block \cite[Section~3]{FK}. At the end of that
-section they note that for $n<d+5$ gaps already appear between the sets of sums of terms of the first block, so that
+section they note that for $n<d+5$ gaps already appear between the sets of sums of the initial terms $C,\dots,C+n-1$, so that
 the integers in these gaps need explicit representations, and that they expect the formula to hold for all $d<n$
 with a more refined analysis. We give these representations for every block and every number of new terms at once.
 For a finite set $A$ of positive integers let $\Sigma(A)$ be the set of sums of its subsets, the empty sum $0$
@@ -120,7 +120,7 @@ symmetric under $x\mapsto T-x$.
 
 \begin{lemma}\label{lem:start}
 The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
-$T_0=n+nC+\binom n2$ is their total, then $\Sigma(A_0)=R_{T_0}$.
+$T_0=n+nC+\binom n2$ is their sum, then $\Sigma(A_0)=R_{T_0}$.
 \end{lemma}
 
 \begin{proof}
@@ -167,9 +167,9 @@ When $h(r)>l(r+1)+C-1$ the left side is empty and there is nothing to check.
 
 \begin{lemma}\label{lem:step}
 Suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
-some point, let $T$ be their total, and suppose that $\Sigma(A)=R_T$, $T\ge 2C+1$ and that the largest element of $A$
+some point, let $T$ be the sum of these terms, and suppose that $\Sigma(A)=R_T$, $T\ge 2C+1$ and that the largest element of $A$
 is less than $M=T-C+1$. Then the next $K$ terms of the sequence are the elements of $M+W$ in increasing order. The new
-total is $T'=T+KM+\sum_{w\in W}w$, and $\Sigma(A\cup(M+W))=R_{T'}$. Moreover $T'-C+1=nM+\binom n2-(d-1)$, and this
+sum of the terms is $T'=T+KM+\sum_{w\in W}w$, and $\Sigma(A\cup(M+W))=R_{T'}$. Moreover $T'-C+1=nM+\binom n2-(d-1)$, and this
 number exceeds $M+n-1$.
 \end{lemma}
 
