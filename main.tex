@@ -120,8 +120,8 @@ $(r+1)M+Q_{r+1}+\{0,n\}$ and $(r+1)M+Q_r+\{d-1,\,C-1\}$. The induction step ther
 \begin{equation}\label{eq:gap}
 [h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K),
 \end{equation}
-an inclusion in which neither $T$ nor $M$ appears. For $n-5\le d\le n-2$ and $d\ge 4$ its left side is not empty
-at $r=2$: then $n-1$, $n-2$ and $0$, $1$, $2$ lie in $W$, so $h(2)=2n-3$ and $l(3)=3$, and
+an inclusion in which neither $T$ nor $M$ appears. For $n\ge 10$ and $d\le n-6$ its left side is empty for
+$2\le r\le K-3$ (\Cref{rem:empty}). For $n-5\le d\le n-2$ and $d\ge 4$ it is not empty at $r=2$: then $n-1$, $n-2$ and $0$, $1$, $2$ lie in $W$, so $h(2)=2n-3$ and $l(3)=3$, and
 $2n-3\le n+d+2=l(3)+C-1$. For $n\ge 20$ and $n-7\le d\le n-1$ the inclusion is proved in \Cref{lem:analytic} for
 $r\le(K-1)/2$ and follows for the other $r$ by a reflection. For $n\le 19$ it is checked by computer for every $d$.
 
@@ -216,7 +216,7 @@ there, and the block beginning at the next $M$ follows. Induction on $i$ gives \
 \eqref{eq:M}.
 \end{proof}
 
-\section{Proof of the inclusion}
+\section{Proof of the inclusion}\label{sec:reflect}
 
 Write $\sigma=\sum_{w\in W}w$. Taking complements $B\mapsto W\setminus B$ shows that $Q_{K-j}=\sigma-Q_j$ for
 $0\le j\le K$, so that $h(K-1-r)=\sigma-l(r+1)$ and $l(K-r)=\sigma-h(r)$. Let $r'=K-1-r$ and consider the reflection
@@ -260,9 +260,17 @@ For $n\le 19$ the computation gives it. In both cases \eqref{eq:seq} holds, whic
 pairs are covered by \cite[Theorem~2]{KP} for $d=1$ and \cite[Theorem~1]{FK} for $2\le d\le n-8$.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{rem:empty}
 The argument of \Cref{lem:step} works for every $1\le d<n$; only the verification of \eqref{eq:gap} uses the
-restriction on $d$.
+restriction on $d$. For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for
+$d=n-7$ and $d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
+$g(r)=h(r)-l(r+1)-(C-1)$; by the reflection of \Cref{sec:reflect} it is enough to show $g(r)>0$ for
+$2\le r\le n/2-1$. If $e\le r$, then $e$ is not among the $r$ largest elements of $[0,n-1]$, so
+$h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+2}2-e$, and $g(r)=r(n-2-r)-n-1$. If $r<e\le n-1-r$, then
+$h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-1-r)-(n+d-1)\ge r(n-1-r)-(2n-7)$. If $e\ge n-r$,
+then $r\ge n-e\ge 7$, $h(r)=r(n-1)-\binom r2-e+(n-1-r)$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-2-r)-2e-1\ge
+r(n-2-r)-(2n-13)$; here $n\ge 2r+2\ge 16$. In each case the lower bound is a concave function of $r$, and it is
+positive at both ends of the range of $r$ allowed in that case when $n\ge 10$.
 \end{remark}
 
 \section*{Acknowledgments and funding}

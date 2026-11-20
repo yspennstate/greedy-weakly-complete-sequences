@@ -3,6 +3,7 @@
 #   B. controls that must fail: the hole of W at d instead of d-1; the translate d-1 dropped from (eq:gap).
 #   C. the greedy sequence computed directly (bit sets) against n, [C,C+n-1], M_i+W for three blocks, 1<=d<n<=NMAX.
 #   D. one block started from R_T for 400 consecutive values of T, n<=12, terms and the new set of sums compared.
+#   E. the left side of (eq:gap) is empty for 2<=r<=K-3 when d<=n-6, and non-empty at r=2 when 4<=d, n-5<=d<=n-2 (10<=n<=150).
 # Usage: python check_greedy_sequences.py [NMAX]   (default 20; a few seconds)
 import sys
 from math import comb
@@ -126,3 +127,19 @@ if __name__ == "__main__":
                 ot, os_ = one_block(n, d, T, C + n - 1)
                 tot += 1; bt += (not ot); bs += (not os_)
     print("D  one block from R_T, n<=12, 400 values of T each:", tot, "cases, wrong terms", bt, "wrong sets", bs)
+    e_bad = e_tot = f_bad = f_tot = 0
+    for n in range(10, 151):
+        for d in range(1, n):
+            W = [w for w in range(n) if w != d - 1]
+            Q = qsets(W)
+            K = len(W)
+            C = n + d
+            gap = [Q[r].bit_length() - 1 <= lo(Q[r + 1]) + C - 1 for r in range(K)]
+            if d <= n - 6:
+                e_tot += 1
+                e_bad += any(gap[r] for r in range(2, K - 2))
+            if 4 <= d and n - 5 <= d <= n - 2:
+                f_tot += 1
+                f_bad += (not gap[2])
+    print("E  left side of (eq:gap) empty for 2<=r<=K-3, d<=n-6, 10<=n<=150:", e_tot, "pairs, exceptions", e_bad)
+    print("E  left side non-empty at r=2, 4<=d, n-5<=d<=n-2, 10<=n<=150:", f_tot, "pairs, exceptions", f_bad)
