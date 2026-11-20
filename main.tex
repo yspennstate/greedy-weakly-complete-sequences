@@ -27,15 +27,14 @@ Givat Ram, Jerusalem, Israel}
 \maketitle
 
 \begin{abstract}
-Fix integers $1\le d<n$ and let $a_1=n$, $a_2=n+d$. For $k\ge 2$ let $a_{k+1}$ be the least integer greater than
-$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul conjectured an explicit formula for
-this sequence: after $n+1$ initial terms it consists of blocks of $n-1$ terms, each block a translate of the set
-$\{0,1,\dots,n-1\}\setminus\{d-1\}$, and the translations grow geometrically with ratio $n$. Knapp and Paul proved the
-case $d=1$, and Fox and Knapp proved the cases $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which
-completes the proof of the conjecture. The proof shows that at the end of every block the set of subset sums is
-$\{0,n\}\cup[n+d,\,T-n-d]\cup\{T-n,T\}$, where $T$ is the sum of the terms so far, and reduces the induction step to
-an inclusion between sets of sums of distinct elements of $\{0,\dots,n-1\}\setminus\{d-1\}$. For $n\ge 20$ the
-inclusion is proved directly, and for $n\le 19$ it is checked by computer.
+Fix integers $1\le d<n$ and let $a_1=n$, $a_2=n+d$; for $k\ge 2$ let $a_{k+1}$ be the least integer greater than
+$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul conjectured that after $n+1$ initial
+terms this sequence consists of blocks of $n-1$ terms, each a translate of $\{0,1,\dots,n-1\}\setminus\{d-1\}$, with
+translations growing geometrically with ratio $n$; they proved the case $d=1$, and Fox and Knapp proved the cases
+$2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which completes the proof of the conjecture. The
+proof describes the set of subset sums exactly at the end of every block and reduces the induction step to an
+inclusion between sets of sums of distinct elements of $\{0,\dots,n-1\}\setminus\{d-1\}$, proved directly for
+$n\ge 20$ and checked by computer for $n\le 19$.
 \end{abstract}
 
 \noindent\textbf{Mathematics Subject Classification (2020):} 11B13, 11B83.
@@ -70,8 +69,8 @@ and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 
 The case $d=1$ is \cite[Theorem~2]{KP}, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
 \cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the sequence is entry A072134 of the OEIS \cite{OEIS}, where the same
-description is given. Linz and Jones \cite{LJ} use these greedy sequences as examples of sequences that are complete
-but not $2$-complete, since no term is a sum of distinct smaller terms. We prove the remaining cases.
+description is given. Linz and Jones \cite{LJ} observe that in these greedy sequences no term is a sum of distinct
+smaller terms. We prove the remaining cases.
 
 \begin{theorem}\label{thm:main}
 \Cref{conj:KP} holds for all $n\ge 2$ and $\max(1,n-7)\le d\le n-1$. Together with \cite[Theorem~1]{FK} and
@@ -159,7 +158,7 @@ $r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or 
 For $d\ge 2$ a precise description of the sets of sums of $r$ distinct elements of $W$ is given by Fox and Knapp
 \cite[Section~2]{FK}.
 
-The induction step rests on the following condition. For $0\le r<K$ consider
+The induction step rests on the following inclusion. For $0\le r<K$ consider
 \begin{equation}\label{eq:gap}
 [h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr).
 \end{equation}
@@ -212,7 +211,7 @@ there, and the block beginning at the next $M$ follows. Induction on $i$ gives \
 \eqref{eq:M}.
 \end{proof}
 
-\section{Verification of the condition}
+\section{Proof of the inclusion}
 
 Write $\sigma=\sum_{w\in W}w$. Taking complements $B\mapsto W\setminus B$ shows that $Q_{K-j}=\sigma-Q_j$ for
 $0\le j\le K$, so that $h(K-1-r)=\sigma-l(r+1)$ and $l(K-r)=\sigma-h(r)$. Let $r'=K-1-r$ and consider the reflection
