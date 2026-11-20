@@ -107,11 +107,17 @@ of the first $n+1$ terms, or of all terms up to the end of a block, let $T$ be i
 block is $M+W$. They cover the integers from $M+n$ to $nM+\sigma-1$ by three kinds of sums: the interval $D_r$ of sums of
 $r$ terms of $M+W$ and one integer of $[C,M-1]$; the sets $C_r=rM+[l(r),h(r)]$ and $n+C_r$, every integer of which
 is a sum of distinct terms; and the sums of $K-1$ terms of $M+W$ with $T-n$ or $T$. The bound $d\le n-8$ is used
-to make $D_r$ and $D_{r+1}$ contiguous for $2\le r\le K-3$. This fails for infinitely many pairs: if
+to make $D_r$ and $D_{r+1}$ contiguous for $2\le r\le K-3$; it comes from the case $d=2$, where $n\ge 10$ is
+needed for $D_2$ and $D_3$ to be contiguous. Fox and Knapp expect the formula to hold for all $d<n$, and suggest
+that there may be only finitely many triples $(n,d,m)$ for which $D_m$ and $D_{m+1}$ are not contiguous
+\cite[Section~3]{FK}. There are infinitely many: if
 $n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the integers of
 $3M+[h(2),\,l(3)+C-1]$ lie strictly between $D_2$ and $D_3$. For $n\ge 10$ and $d\le n-6$, in particular for
 $d=n-7$ and $d=n-6$, the intervals $D_r$ and $D_{r+1}$ are still contiguous for $2\le r\le K-3$
-(\Cref{rem:empty}).
+(\Cref{rem:empty}), so for $n\ge 10$ these two values of $d$ lie outside the range of \cite[Theorem~1]{FK} although
+$D_r$ and $D_{r+1}$ are contiguous for $2\le r\le K-3$. For $d\in\{n-7,n-6\}$ and $n\le 9$, that is for $(n,d)$
+equal to $(8,2)$, $(9,2)$ or $(9,3)$, the intervals $D_2$ and $D_3$ are not contiguous: in the notation of
+\Cref{rem:empty}, $g(2)=n-9\le 0$.
 
 We use instead that the set of subset sums is known exactly at the end of every block: $\Sigma(A)=R_T$, where
 \begin{equation}\label{eq:RT}
@@ -130,7 +136,7 @@ l(r+1)\le h(r)\qquad\text{and}\qquad h(r+1)-l(r+1)\ge n-1,
 so the left side lies in $[l(r+1),\,h(r+1)+n]=[l(r+1),h(r+1)]\cup\bigl(n+[l(r+1),h(r+1)]\bigr)$, and the
 statement of Fox and Knapp on $C_{r+1}$, which in this notation reads
 $[l(r+1),h(r+1)]\subset Q_{r+1}\cup(Q_r+d-1)$, gives the inclusion (\Cref{lem:Cm}). Their derivation of that
-statement, from \cite[Lemma~1]{FK} and four identities, does not use $d\le n-8$; \Cref{lem:Cm}(a) gives a shorter
+statement, from \cite[Lemma~2]{FK} and four identities, does not use $d\le n-8$; \Cref{lem:Cm}(a) gives a shorter
 proof. The case $r=K-1$ is the case $r=0$ under the reflection $x\mapsto\sigma+C-1-x$ (\Cref{sec:reflect}).
 Inclusion \eqref{eq:gap} holds for every $2\le d<n$ and $0\le r<K$, whether or not $D_r$ and $D_{r+1}$ are
 contiguous; for $2\le d\le n-8$ this gives a second proof of \cite[Theorem~1]{FK}.
@@ -178,9 +184,7 @@ $r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or 
 \end{proof}
 
 For $d\ge 2$ a precise description of the sets of sums of $r$ distinct elements of $W$ is given by Fox and Knapp
-\cite[Section~2]{FK}.
-
-When $h(r)>l(r+1)+C-1$ its left side is empty.
+\cite[Section~2]{FK}. When $h(r)>l(r+1)+C-1$, the left side of \eqref{eq:gap} is empty.
 
 \begin{lemma}\label{lem:step}
 Suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
@@ -242,7 +246,7 @@ right side as follows:
 Hence \eqref{eq:gap} for $r$ and for $K-1-r$ are equivalent.
 
 Part (a) of the next lemma is, in the notation of Fox and Knapp, the statement that every integer of $C_m$ is a
-sum of distinct terms \cite[Section~3]{FK}; they derive it from \cite[Lemma~1]{FK} and four identities, an
+sum of distinct terms \cite[Section~3]{FK}; they derive it from \cite[Lemma~2]{FK} and four identities, an
 argument that does not use $d\le n-8$.
 
 \begin{lemma}\label{lem:Cm}
