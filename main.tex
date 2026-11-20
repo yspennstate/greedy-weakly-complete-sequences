@@ -144,6 +144,9 @@ The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of th
 $T_0=n+nC+\binom n2$ is their sum, then $\Sigma(A_0)=R_{T_0}$.
 \end{lemma}
 
+The first statement and the intervals $[l_r,u_r]$ of the proof are in \cite[Section~3]{FK}, whose base step uses
+$d\le n-5$; the proof below holds for every $1\le d<n$.
+
 \begin{proof}
 Every sum of two or more distinct terms that includes a term at least $C$ is at least $C+n$. So for $C\le x\le
 C+n-1$ the only sums of earlier terms that are at most $x$ are $0$, $n$ and the single terms, and each such $x$ is
@@ -322,7 +325,7 @@ dissemination.
 
 The Python program at
 \begin{center}
-\url{https://github.com/yspennstate/greedy-weakly-complete-sequences/tree/v1.2}
+\url{https://github.com/yspennstate/greedy-weakly-complete-sequences/tree/v1.3}
 \end{center}
 checks \eqref{eq:gap} for every $1\le d<n\le 31$ and for $n-7\le d\le n-1$, $32\le n\le 80$, checks parts (a) and (b)
 of \Cref{lem:Cm} for $2\le d<n\le 60$, and computes the first three blocks of the greedy sequence directly for
