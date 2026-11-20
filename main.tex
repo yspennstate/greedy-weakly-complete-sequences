@@ -35,7 +35,7 @@ $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which completes
 the end of every block the set of sums of distinct terms is $\{0,n\}\cup[n+d,T-n-d]\cup\{T-n,T\}$, where $T$ is the
 sum of the terms, and the induction step reduces to an inclusion between sets of sums of distinct elements of
 $\{0,\dots,n-1\}\setminus\{d-1\}$. For every $2\le d<n$ the inclusion follows from a statement of Fox and Knapp on
-the sums of $m$ terms of a block, for which we give a short proof.
+the sums of $r$ terms of a block, for which we give a short proof.
 \end{abstract}
 
 \noindent\textbf{Mathematics Subject Classification (2020):} 11B13, 11B83.
@@ -68,7 +68,7 @@ a=\frac{3n^2+(2d-3)n-4d+2}{2(n-1)},\qquad c=\frac{n^2-n-2(d-1)}{2(n-1)},
 and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 \end{conjecture}
 
-The case $d=1$ is \cite[Theorem~2]{KP}, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
+The case $d=1$ is \cite[Theorem~2]{KP}, in an equivalent form, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
 \cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the terms agree with OEIS A072134 \cite{OEIS}, where this description is
 stated without proof. We prove the remaining cases, by an argument that covers every $2\le d<n$.
 
@@ -97,7 +97,7 @@ $(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S
 
 Knapp and Paul \cite{KP} and Fox and Knapp \cite{FK} argue by induction on the blocks, and so do we. Write $[x,y]$
 for the set of integers $t$ with $x\le t\le y$. For a finite set $A$ of positive integers let $\Sigma(A)$ be the set
-of sums of its subsets, the empty sum $0$ included. For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct
+of sums of distinct elements of $A$, the empty sum $0$ included. For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct
 elements of $W$, with $Q_0=\{0\}$, and let $l(r)=\min Q_r$ and $h(r)=\max Q_r$.
 
 Fox and Knapp \cite[Section~3]{FK} argue as follows. Let $A$ be the set of the first $n+1$ terms, or of all terms up
@@ -132,7 +132,7 @@ R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\}
 (\Cref{lem:start,lem:step}). With this description of the sums, \eqref{eq:gap} gives the next block, and induction on
 the blocks proves the conjecture.
 
-\section{The subset sums at the end of a block}
+\section{The sums of distinct terms at the end of a block}
 
 For a finite set $A$ of positive integers with sum $T$, the set $\Sigma(A)$ is symmetric under $x\mapsto T-x$.
 
@@ -199,7 +199,7 @@ $[l(r)+C,\,h(r)+T-C]$. Thus the sums with exactly $r$ new terms and an element o
 \[
 D_r=[rM+l(r)+C,\ (r+1)M+h(r)-1].
 \]
-These are the intervals of \cite[Section~3]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
+These are the intervals of \cite[Section~3]{FK}; the sets $Q_r$ are described in \cite[Section~2]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
 $rM+Q_r+\{T-n,T\}=(r+1)M+Q_r+\{d-1,C-1\}$. The integers strictly between $D_r$ and $D_{r+1}$ form the set
 $(r+1)M+[h(r),l(r+1)+C-1]$. By \eqref{eq:gap} this set is contained in
 $(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. Hence $\Sigma(A')$ contains the
@@ -233,23 +233,23 @@ right side as follows:
 \end{gather*}
 Hence \eqref{eq:gap} for $r$ and for $K-1-r$ are equivalent.
 
-Part (a) of the next lemma is the statement of Fox and Knapp that every integer of $mM+[l(m),h(m)]$ is a sum of
-distinct terms \cite[Section~3]{FK}, which they derive from \cite[Lemma~2]{FK}, written in terms of $W$.
+Written in terms of $W$, part (a) of the next lemma is the statement of Fox and Knapp that every integer of
+$rM+[l(r),h(r)]$ is a sum of distinct terms \cite[Section~3]{FK}, which they derive from \cite[Lemma~2]{FK}.
 
 \begin{lemma}\label{lem:Cm}
 Let $2\le d<n$.
 \begin{enumerate}[label=(\alph*)]
-\item For $1\le m\le K$, every integer of $[l(m),h(m)]$ lies in $Q_m\cup\bigl(Q_{m-1}+(d-1)\bigr)$.
+\item For $1\le r\le K$, every integer of $[l(r),h(r)]$ lies in $Q_r\cup\bigl(Q_{r-1}+(d-1)\bigr)$.
 \item For $0\le r\le K-2$, $l(r+1)\le h(r)$ and $h(r+1)-l(r+1)\ge n-1$.
 \item \eqref{eq:gap} holds for $0\le r\le K-2$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(a) Let $e=d-1$ and $x\in[l(m),h(m)]$. The sums of $m$ distinct elements of $[0,n-1]$ fill the interval
-$[\binom m2,\,\binom m2+m(n-m)]$ (proof of \Cref{lem:start}), and this interval contains $[l(m),h(m)]$. So $x$ is
-the sum of the elements of an $m$-element set $U\subset[0,n-1]$. If $e\notin U$, then $U\subset W$ and $x\in Q_m$.
-If $e\in U$, then $U\setminus\{e\}$ is a set of $m-1$ elements of $W$, and $x\in Q_{m-1}+e$.
+(a) Let $e=d-1$ and $x\in[l(r),h(r)]$. The sums of $r$ distinct elements of $[0,n-1]$ fill the interval
+$[\binom r2,\,\binom r2+r(n-r)]$ (proof of \Cref{lem:start}), and this interval contains $[l(r),h(r)]$. So $x$ is
+the sum of the elements of an $r$-element set $U\subset[0,n-1]$. If $e\notin U$, then $U\subset W$ and $x\in Q_r$.
+If $e\in U$, then $U\setminus\{e\}$ is a set of $r-1$ elements of $W$, and $x\in Q_{r-1}+e$.
 
 (b) Since $d\ge 2$ and $d-1\le n-2$, both $0$ and $n-1$ lie in $W$. For $r=0$ the first inequality reads $0\le 0$.
 For $1\le r\le K-2$, $l(r+1)$ is the sum of $0$ and the $r$ smallest elements of $W\setminus\{0\}$, which is at most
@@ -262,7 +262,7 @@ $h(m)-l(m)\ge n-1$.
 
 (c) Let $0\le r\le K-2$ and $m=r+1$. By (b) the left side of \eqref{eq:gap} lies in $[l(m),\,l(m)+C-1]$, and
 $l(m)+C-1=l(m)+n+d-1\le h(m)+n$ because $h(m)-l(m)\ge n-1\ge d-1$. Since $h(m)-l(m)\ge n-1$, the interval
-$[l(m),h(m)+n]$ is the union of $[l(m),h(m)]$ and $n+[l(m),h(m)]$. By (a) the first lies in
+$[l(m),h(m)+n]$ is the union of $[l(m),h(m)]$ and $n+[l(m),h(m)]$. By (a) with $m$ in place of $r$, the first lies in
 $Q_m\cup(Q_{m-1}+(d-1))$ and the second in $(Q_m+n)\cup(Q_{m-1}+(C-1))$, since $d-1+n=C-1$. These are the four
 translates on the right side of \eqref{eq:gap}.
 \end{proof}
@@ -280,9 +280,8 @@ and suggest that there may be only finitely many triples $(n,d,r)$ for which $D_
 \cite[Section~3]{FK}. There are infinitely many: if $n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and
 $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for $r=2$.
 
-For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $n\ge 10$ the
-values $d=n-7$ and $d=n-6$ lie outside the range of \cite[Theorem~1]{FK} although $D_r\cup D_{r+1}$ is an interval
-for $2\le r\le K-3$, and for them the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
+For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $d=n-7$ and
+$d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
 $g(r)=h(r)-l(r+1)-(C-1)$; by the reflection of \Cref{sec:reflect} it is enough to show $g(r)>0$ for
 $2\le r\le n/2-1$. If $e\le r$, then $e$ is not among the $r$ largest elements of $[0,n-1]$, so
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+2}2-e$, and $g(r)=r(n-2-r)-n-1$. If $r<e\le n-1-r$, then
