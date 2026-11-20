@@ -28,9 +28,9 @@ Givat Ram, Jerusalem, Israel}
 
 \begin{abstract}
 Fix integers $1\le d<n$ and let $a_1=n$, $a_2=n+d$; for $k\ge 2$ let $a_{k+1}$ be the least integer greater than
-$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul conjectured that after $n+1$ initial
+$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Knapp and Paul conjectured that after its first $n+1$
 terms this sequence consists of blocks of $n-1$ terms, each a translate of $\{0,1,\dots,n-1\}\setminus\{d-1\}$, with
-translations growing geometrically with ratio $n$; they proved the case $d=1$, and Fox and Knapp proved the cases
+translations $M_i$ satisfying $M_{i+1}=nM_i+\binom n2-(d-1)$; they proved the case $d=1$, and Fox and Knapp proved the cases
 $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which completes the proof of the conjecture. The
 proof describes the set of subset sums exactly at the end of every block and reduces the induction step to an
 inclusion between sets of sums of distinct elements of $\{0,\dots,n-1\}\setminus\{d-1\}$, proved directly for
@@ -93,29 +93,41 @@ each block listed in increasing order. This is the conjecture. Indeed $\sum_{w\i
 $M_{i+1}+c=n(M_i+c)$, and therefore $M_i=(M_1+c)n^{i-1}-c$. A direct expansion gives
 $(M_1+c)/n=\tfrac32 n+d-\tfrac{d-1}{n-1}$, which equals $a$. Hence $M_i+W=an^i+S$, while $\{n\}\cup\{C,\dots,C+n-1\}=I\cup J$.
 
-Knapp and Paul \cite{KP} and Fox and Knapp \cite{FK} argue by induction on the blocks, and so do we. Fox and Knapp
-cover the integers below the next block by intervals, among them intervals $D_m$, each made of the sums of $m$ terms
-of the current block and one integer that is already a sum of earlier terms. For $2\le d\le n-8$ they show that $D_m$ and
-$D_{m+1}$ are contiguous for $2\le m\le n-4$, and they represent the integers between the last two of these intervals
-by adding the sum of all earlier terms to sums of terms of the current block \cite[Section~3]{FK}. At the end of that
-section they note that for $n<d+5$ gaps already appear between the sets of sums of the initial terms $C,\dots,C+n-1$, so that
-the integers in these gaps need explicit representations, and that they expect the formula to hold for all $d<n$
-with a more refined analysis. We give these representations for every block and every number of new terms at once.
-For a finite set $A$ of positive integers let $\Sigma(A)$ be the set of sums of its subsets, the empty sum $0$
-included, and let $T$ be the sum of the elements of $A$. We show that at the end of every block $\Sigma(A)=R_T$,
-where for an integer $T\ge 2C$
+Knapp and Paul \cite{KP} and Fox and Knapp \cite{FK} argue by induction on the blocks, and so do we. Write $[x,y]$
+for the set of integers $t$ with $x\le t\le y$. For a finite set $A$ of positive integers let $\Sigma(A)$ be the set
+of sums of its subsets, the empty sum $0$ included. For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct
+elements of $W$, with $Q_0=\{0\}$, and let $l(r)=\min Q_r$ and $h(r)=\max Q_r$.
+
+Let $A$ be the set of the first $n+1$ terms, or the set of all terms up to the end of a block; let $T$ be the sum
+of the elements of $A$, and put $M=T-C+1$, so that the next block is $M+W$. The sums of $r$ terms of $M+W$ and one
+integer of $[C,M-1]$ form an interval $D_r$. For $2\le d\le n-8$ Fox and Knapp \cite[Section~3]{FK} show that
+$D_r\cup D_{r+1}$ is an interval when $2\le r\le n-4$. They represent the integers between $D_{n-2}$ and $D_{n-1}$
+by adding $T-n$ or $T$ to a sum of $n-2$ terms of $M+W$; the two integers that this leaves are the sum of all terms
+of $M+W$ and that sum plus $n$. At the end of that section they remark that the hypothesis $n\ge d+8$ is one
+condition under which the union of each pair of consecutive intervals in their argument is an interval. The
+constant $8$ comes from the case $d=2$. For $n<d+5$ gaps appear already between the sets of sums of the terms
+$C,\dots,C+n-1$, and the integers in these gaps need explicit representations. They expect the formula to hold for
+all $d<n$.
+
+We give such representations for every $r$ and every block. We show that $\Sigma(A)=R_T$ for each such $A$, where
+for an integer $T\ge 2C$
 \begin{equation}\label{eq:RT}
 R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\}
 \end{equation}
-and $[x,y]$ denotes the set of integers $m$ with $x\le m\le y$ (\Cref{lem:start,lem:step}). The induction step then
-reduces to the inclusion \eqref{eq:gap} between sets of sums of distinct elements of $W$, which involves neither the
-block index nor the terms already chosen. For $n\ge 20$ and $d\ge n-7$ the inclusion is proved in
-\Cref{lem:analytic}, and for $n\le 19$ it is checked by computer.
+(\Cref{lem:start,lem:step}). The integers strictly between $D_r$ and $D_{r+1}$ are those of
+$(r+1)M+[h(r),\,l(r+1)+C-1]$, and the elements $0$, $n$, $T-n$, $T$ of $R_T$ give the sums
+$(r+1)M+Q_{r+1}+\{0,n\}$ and $(r+1)M+Q_r+\{d-1,\,C-1\}$. The induction step therefore holds as soon as
+\begin{equation}\label{eq:gap}
+[h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K),
+\end{equation}
+an inclusion in which neither $T$ nor $M$ appears. For $n-5\le d\le n-2$ and $d\ge 4$ its left side is not empty
+at $r=2$: then $n-1$, $n-2$ and $0$, $1$, $2$ lie in $W$, so $h(2)=2n-3$ and $l(3)=3$, and
+$2n-3\le n+d+2=l(3)+C-1$. For $n\ge 20$ and $n-7\le d\le n-1$ the inclusion is proved in \Cref{lem:analytic} for
+$r\le(K-1)/2$ and follows for the other $r$ by a reflection. For $n\le 19$ it is checked by computer for every $d$.
 
 \section{The subset sums at the end of a block}
 
-Let $\Sigma(A)$, $T$, $[x,y]$ and $R_T$ be as in \eqref{eq:RT} and the sentences around it. The set $\Sigma(A)$ is
-symmetric under $x\mapsto T-x$.
+For a finite set $A$ of positive integers with sum $T$, the set $\Sigma(A)$ is symmetric under $x\mapsto T-x$.
 
 \begin{lemma}\label{lem:start}
 The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ is the set of these $n+1$ terms and
@@ -141,9 +153,6 @@ $l_1=C$, and $u_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ contribut
 $\{T_0-n,T_0\}$.
 \end{proof}
 
-For $0\le r\le K$ let $Q_r$ be the set of sums of $r$ distinct elements of $W$, with $Q_0=\{0\}$, and let
-$l(r)=\min Q_r$ and $h(r)=\max Q_r$.
-
 \begin{lemma}\label{lem:Q}
 Any two consecutive elements of $Q_r$ differ by at most $2$.
 \end{lemma}
@@ -158,11 +167,7 @@ $r$ largest. The sums along the way go from $l(r)$ to $h(r)$ in steps of $1$ or 
 For $d\ge 2$ a precise description of the sets of sums of $r$ distinct elements of $W$ is given by Fox and Knapp
 \cite[Section~2]{FK}.
 
-The induction step rests on the following inclusion. For $0\le r<K$ consider
-\begin{equation}\label{eq:gap}
-[h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr).
-\end{equation}
-When $h(r)>l(r+1)+C-1$ the left side is empty and there is nothing to check.
+The induction step rests on the inclusion \eqref{eq:gap}. When $h(r)>l(r+1)+C-1$ its left side is empty.
 
 \begin{lemma}\label{lem:step}
 Suppose \eqref{eq:gap} holds for every $0\le r<K$. Let $A$ be the set of the first terms of the greedy sequence up to
