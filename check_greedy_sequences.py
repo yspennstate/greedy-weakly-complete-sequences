@@ -4,6 +4,7 @@
 #   C. the greedy sequence computed directly (bit sets) against n, [C,C+n-1], M_i+W for three blocks, 1<=d<n<=NMAX.
 #   D. one block started from R_T for 400 consecutive values of T, n<=12, terms and the new set of sums compared.
 #   E. the left side of (eq:gap) is empty for 2<=r<=K-3 when d<=n-6, and non-empty at r=2 when 4<=d, n-5<=d<=n-2 (10<=n<=150).
+#   F. parts (a) and (b) of the lemma that proves (eq:gap) for r<=K-2, for 2<=d<n<=60.
 # Usage: python check_greedy_sequences.py [NMAX]   (default 20; a few seconds)
 import sys
 from math import comb
@@ -143,3 +144,18 @@ if __name__ == "__main__":
                 f_bad += (not gap[2])
     print("E  left side of (eq:gap) empty for 2<=r<=K-3, d<=n-6, 10<=n<=150:", e_tot, "pairs, exceptions", e_bad)
     print("E  left side non-empty at r=2, 4<=d, n-5<=d<=n-2, 10<=n<=150:", f_tot, "pairs, exceptions", f_bad)
+    fa = fb = ft = 0
+    for n in range(3, 61):
+        for d in range(2, n):
+            W = [w for w in range(n) if w != d - 1]
+            Q = qsets(W)
+            K = len(W)
+            L = [lo(q) for q in Q]
+            H = [q.bit_length() - 1 for q in Q]
+            ft += 1
+            for m in range(1, K + 1):
+                need = ((1 << (H[m] - L[m] + 1)) - 1) << L[m]
+                fa += bool(need & ~(Q[m] | (Q[m - 1] << (d - 1))))
+            for r in range(K - 1):
+                fb += not (L[r + 1] <= H[r] and H[r + 1] - L[r + 1] >= n - 1)
+    print("F  Lemma 3.1 (a) and (b), 2<=d<n<=60:", ft, "pairs, failures (a)", fa, "(b)", fb)
