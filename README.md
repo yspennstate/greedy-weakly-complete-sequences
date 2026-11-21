@@ -2,7 +2,7 @@
 
 Yitzchak Shmalo
 
-Fix integers 1 <= d < n. The greedy sequence with a_1 = n, a_2 = n + d takes as each later term the least integer
+Fix integers 1 <= d < n. The greedy sequence with x_1 = n, x_2 = n + d takes as each later term the least integer
 larger than the previous one that is not a sum of distinct earlier terms. Paul conjectured an explicit
 formula for this sequence (Conjecture B of Knapp and Paul, Integers 2012). Knapp and Paul proved the case d = 1, and Fox and
 Knapp (J. Integer Seq. 2013) proved 2 <= d <= n - 8. The paper proves the remaining cases n - 7 <= d <= n - 1.
