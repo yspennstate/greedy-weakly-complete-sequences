@@ -53,8 +53,8 @@ terms $5,8$ give
 5,\ 8,\ 9,\ 10,\ 11,\ 12,\ 48,\ 49,\ 51,\ 52,\ 248,\ 249,\ 251,\ 252,\ 1248,\ 1249,\ 1251,\ 1252,\ \dots
 \]
 (see \cite{FK}). Knapp and Paul \cite{KP} determined these sequences for several families of initial terms and
-observed that the initial terms are best written as $n$ and $n+d$. For $d<n$ the following conjecture is due to
-Paul; see Knapp and Paul \cite[Conjecture~B]{KP}.
+observed that the initial terms are best written as $n$ and $n+d$. For $d<n$ the following is Conjecture~B of
+Knapp and Paul \cite{KP}; Fox and Knapp attribute it to Paul \cite{FK}.
 
 \begin{conjecture}[Paul]\label{conj:KP}
 Let $1\le d<n$ and let $(a_k)$ be the greedy sequence with $a_1=n$ and $a_2=n+d$. Then the set of its terms is
@@ -70,7 +70,7 @@ and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 
 The case $d=1$ is \cite[Theorem~2]{KP}, in the equivalent form where the union starts at $i=0$, whose block is $J$; Fox and Knapp proved the conjecture for $2\le d\le n-8$
 \cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the sequence is OEIS A072134 \cite{OEIS}, where its terms are given, without proof,
-as $3$, $6$ and the numbers $v_k$, $v_k+2$ with $v_0=5$ and $v_k=3v_{k-1}+2$. We prove the remaining cases, by an argument that covers every $2\le d<n$.
+as $3$, $6$ and the numbers $v_k$, $v_k+2$ with $v_0=5$ and $v_k=3v_{k-1}+2$. We prove the remaining cases by an argument that covers every $2\le d<n$.
 
 \begin{theorem}\label{thm:main}
 \Cref{conj:KP} holds for all $2\le d<n$. Together with \cite[Theorem~2]{KP}, it holds for all $1\le d<n$.
@@ -144,7 +144,8 @@ $T_0=n+nC+\binom n2$ is their sum, then $\Sigma(A_0)=R_{T_0}$.
 \end{lemma}
 
 The first statement and the description of the sums of $r$ of the terms $C,\dots,C+n-1$ are in
-\cite[Section~3]{FK}, where the first $n+1$ terms are treated for $d\le n-5$.
+\cite[Section~3]{FK}. There consecutive sets of such sums are joined directly, which needs $n\ge d+5$; below, the
+term $n$ is added first, and the joined sets overlap for every $d<n$.
 
 \begin{proof}
 Every sum of two or more distinct terms that includes a term at least $C$ is at least $C+n$. So for $C\le x\le
@@ -278,9 +279,10 @@ conjecture. The case $d=1$ is \cite[Theorem~2]{KP}.
 \begin{remark}\label{rem:empty}
 The left side of \eqref{eq:gap} is the set of integers strictly between $D_r$ and $D_{r+1}$, shifted by $(r+1)M$, so
 $D_r\cup D_{r+1}$ is an interval exactly when the left side of \eqref{eq:gap} is empty. Fox and Knapp expect the conjecture to hold for all $d<n$,
-and suggest that there may be only finitely many triples $(n,d,r)$ for which $D_r\cup D_{r+1}$ is not an interval
-\cite[Section~3]{FK}. There are infinitely many: if $n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and
-$h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for $r=2$.
+and suggest that there may be only finitely many triples $(n,d,r)$ with $2\le r\le K-3$ for which $D_r\cup D_{r+1}$
+is not an interval \cite[Section~3]{FK}. There are infinitely many: if $n\ge 6$, $d\ge 4$ and $n-5\le d\le n-1$, then
+$r=2\le K-3$, $l(3)=3$ and $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for
+$r=2$.
 
 For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $d=n-7$ and
 $d=n-6$ the left side of \eqref{eq:gap} can be non-empty only for $r\in\{0,1,K-2,K-1\}$. To see this, let $e=d-1\le n-7$ as in the proof of \Cref{lem:Cm}(a), and write
@@ -329,8 +331,9 @@ The Python program at
 \url{https://github.com/yspennstate/greedy-weakly-complete-sequences/tree/v1.4}
 \end{center}
 checks \eqref{eq:gap} for every $1\le d<n\le 31$ and for $n-7\le d\le n-1$, $32\le n\le 80$, checks parts (a) and (b)
-of \Cref{lem:Cm} for $2\le d<n\le 60$, and computes the first three blocks of the greedy sequence directly for
-$n\le 20$.
+of \Cref{lem:Cm} for $2\le d<n\le 60$, computes the first three blocks of the greedy sequence directly for
+$n\le 20$, starts one block from $R_T$ for $400$ values of $T$ for each $n\le 12$, and checks the two statements of
+\Cref{rem:empty} for $10\le n\le 150$.
 
 \begin{thebibliography}{9}
 
@@ -343,7 +346,7 @@ J.\ Integer Seq.\ \textbf{16} (2013), Article 13.6.2.
 \bibitem{Hon}
 R.~Honsberger,
 \emph{Mathematical Gems III},
-Mathematical Association of America, 1985.
+Dolciani Mathematical Expositions 9, Mathematical Association of America, 1985.
 
 \bibitem{KP}
 M.~P.~Knapp and M.~D.~Paul,

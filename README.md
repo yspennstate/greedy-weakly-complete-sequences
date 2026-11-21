@@ -10,7 +10,7 @@ Knapp (J. Integer Seq. 2013) proved 2 <= d <= n - 8. The paper proves the remain
 ## Files
 
 - `main.tex`, `main.pdf`: the paper.
-- `check_greedy_sequences.py`: the checks described after the proof of Theorem 1.2. Python 3, standard library only.
+- `check_greedy_sequences.py`: the checks listed in the Data and code availability section of the paper. Python 3, standard library only.
 
 ```
 python check_greedy_sequences.py        # n <= 20 for the direct greedy check; runs in a few seconds
