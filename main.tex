@@ -27,8 +27,8 @@ Givat Ram, Jerusalem, Israel}
 \maketitle
 
 \begin{abstract}
-Fix integers $1\le d<n$ and let $a_1=n$, $a_2=n+d$; for $k\ge 2$ let $a_{k+1}$ be the least integer greater than
-$a_k$ that is not a sum of distinct terms among $a_1,\dots,a_k$. Paul conjectured that after its first $n+1$
+Fix integers $1\le d<n$ and let $x_1=n$, $x_2=n+d$; for $k\ge 2$ let $x_{k+1}$ be the least integer greater than
+$x_k$ that is not a sum of distinct terms among $x_1,\dots,x_k$. Paul conjectured that after its first $n+1$
 terms this sequence consists of blocks of $n-1$ terms, each a translate of $\{0,1,\dots,n-1\}\setminus\{d-1\}$, with
 translations $M_i$ satisfying $M_{i+1}=nM_i+\binom n2-(d-1)$. Knapp and Paul proved the case $d=1$, and Fox and Knapp proved the cases
 $2\le d\le n-8$. We prove the remaining cases $n-7\le d\le n-1$, which completes the proof of the conjecture. At
@@ -46,8 +46,8 @@ the sums of $r$ terms of a block.
 
 An increasing sequence of positive integers is \emph{weakly complete} if every sufficiently large integer is a sum of
 distinct terms of the sequence (we follow the terminology of Honsberger \cite{Hon}; see also \cite{KP}). Given two initial terms, the greedy algorithm produces such a sequence:
-once $a_1<\dots<a_k$ are known, $a_{k+1}$ is the least integer greater than $a_k$ that is not a sum of distinct terms
-among $a_1,\dots,a_k$. Every integer greater than $a_2$ is then a sum of distinct terms. For example, the initial
+once $x_1<\dots<x_k$ are known, $x_{k+1}$ is the least integer greater than $x_k$ that is not a sum of distinct terms
+among $x_1,\dots,x_k$. Every integer greater than $x_2$ is then a sum of distinct terms. For example, the initial
 terms $5,8$ give
 \[
 5,\ 8,\ 9,\ 10,\ 11,\ 12,\ 48,\ 49,\ 51,\ 52,\ 248,\ 249,\ 251,\ 252,\ 1248,\ 1249,\ 1251,\ 1252,\ \dots
@@ -57,7 +57,7 @@ observed that the initial terms are best written as $n$ and $n+d$. For $d<n$ the
 Knapp and Paul \cite{KP}; Fox and Knapp attribute it to Paul \cite{FK}.
 
 \begin{conjecture}[Paul]\label{conj:KP}
-Let $1\le d<n$ and let $(a_k)$ be the greedy sequence with $a_1=n$ and $a_2=n+d$. Then the set of its terms is
+Let $1\le d<n$ and let $(x_k)$ be the greedy sequence with $x_1=n$ and $x_2=n+d$. Then the set of its terms is
 \[
 I\cup J\cup\bigcup_{i\ge 1}\bigl(an^i+S\bigr),
 \]
@@ -166,6 +166,8 @@ $\lambda_1=C$, and $\mu_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ c
 $\{T_0-n,T_0\}$.
 \end{proof}
 
+The next lemma is a weak form of \cite[Lemma~2]{FK}; unlike that lemma it includes the case $d=1$.
+
 \begin{lemma}\label{lem:Q}
 Let $1\le d<n$ and $0\le r\le K$. Any two consecutive elements of $Q_r$ differ by at most $2$.
 \end{lemma}
@@ -198,11 +200,11 @@ $rM+q+s$ with $q\in Q_r$ and $s\in R_T$. Hence
 \Sigma(A')=\bigcup_{r=0}^{K}\bigl(rM+Q_r+R_T\bigr).
 \]
 The interval $[C,T-C]$ contains at least two integers, so by \Cref{lem:Q} the set $Q_r+[C,T-C]$ is the interval
-$[l(r)+C,\,h(r)+T-C]$. Thus the sums with exactly $r$ new terms and an element of $[C,T-C]$ form the interval
+$[l(r)+C,\,h(r)+T-C]$ (compare \cite[Lemma~3]{FK}). Thus the sums with exactly $r$ new terms and an element of $[C,T-C]$ form the interval
 \[
 D_r=[rM+l(r)+C,\ (r+1)M+h(r)-1].
 \]
-These are the intervals of \cite[Section~3]{FK}; the sets $Q_r$ are described in \cite[Section~2]{FK}. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
+These are the intervals of \cite[Section~3]{FK}, and \cite[Lemma~2]{FK} determines the sets $Q_r$ exactly. The remaining sums with $r$ new terms are $rM+Q_r+\{0,n\}$ and
 $rM+Q_r+\{T-n,T\}=(r+1)M+Q_r+\{d-1,C-1\}$. The integers strictly between $D_r$ and $D_{r+1}$ form the set
 $(r+1)M+[h(r),l(r+1)+C-1]$. By \eqref{eq:gap} this set is contained in
 $(r+1)M+(Q_r+\{d-1,C-1\})\cup(Q_{r+1}+\{0,n\})$, which lies in $\Sigma(A')$. Hence $\Sigma(A')$ contains the
@@ -237,7 +239,7 @@ right side as follows:
 Hence \eqref{eq:gap} for $r$ and for $K-1-r$ are equivalent.
 
 Written in terms of $W$, part (a) of the next lemma is the statement of Fox and Knapp that every integer of
-$rM+[l(r),h(r)]$ is a sum of distinct terms \cite[Section~3]{FK}, which they derive from \cite[Lemma~2]{FK}.
+$rM+[l(r),h(r)]$ is a sum of distinct terms \cite[Section~3, p.~10]{FK}, which they derive from \cite[Lemma~2]{FK}.
 
 \begin{lemma}\label{lem:Cm}
 Let $2\le d<n$.
