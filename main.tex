@@ -69,8 +69,8 @@ and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 \end{conjecture}
 
 The case $d=1$ is \cite[Theorem~2]{KP}, in the equivalent form where the union starts at $i=0$, whose block is $J$; Fox and Knapp proved the conjecture for $2\le d\le n-8$
-\cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the terms agree with OEIS A072134 \cite{OEIS}, where this description is
-stated without proof. We prove the remaining cases, by an argument that covers every $2\le d<n$.
+\cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the sequence is OEIS A072134 \cite{OEIS}, where its terms are given, without proof,
+as $3$, $6$ and the numbers $v_k$, $v_k+2$ with $v_0=5$ and $v_k=3v_{k-1}+2$. We prove the remaining cases, by an argument that covers every $2\le d<n$.
 
 \begin{theorem}\label{thm:main}
 \Cref{conj:KP} holds for all $2\le d<n$. Together with \cite[Theorem~2]{KP}, it holds for all $1\le d<n$.
@@ -102,13 +102,13 @@ elements of $W$, with $Q_0=\{0\}$, and let $l(r)=\min Q_r$ and $h(r)=\max Q_r$.
 
 Fox and Knapp \cite[Section~3]{FK} argue as follows. Let $A$ be the set of the first $n+1$ terms, or of all terms up
 to the end of a block, let $T$ be its sum and put $M=T-C+1$; the next block is $M+W$. The sums of $r$ terms of $M+W$
-and one integer of $[C,M-1]$ fill the interval
+and an element of $[C,M-1]\subset\Sigma(A)$ fill the interval
 \[
 D_r=[\,rM+l(r)+C,\ (r+1)M+h(r)-1\,],
 \]
 and the argument needs $D_r\cup D_{r+1}$ to be an interval for $2\le r\le K-3$. The bound $d\le n-8$ comes from
-this requirement at $d=2$. Further bounds on $d$ enter between $D_1$ and $D_2$, and the first $n+1$ terms are treated
-for $d\le n-5$. For $n\ge 6$, $d\ge 4$ and $n-5\le d\le n-1$ the requirement fails: the integers
+this requirement at $d=2$. Fox and Knapp also use $2\le d\le n-8$ to show that $D_1$, the interval $2M+[l(2),h(2)]$,
+its translate by $n$, and $D_2$ follow one another without gaps, and they treat the first $n+1$ terms for $d\le n-5$. For $n\ge 6$, $d\ge 4$ and $n-5\le d\le n-1$ the requirement fails: the integers
 of $3M+[h(2),\,l(3)+C-1]$ lie strictly between $D_2$ and $D_3$ (\Cref{rem:empty}).
 
 Those integers are nevertheless sums of distinct terms. The integers strictly between $D_r$ and $D_{r+1}$ are those
@@ -130,7 +130,9 @@ $\Sigma(A)=R_T$, where
 R_T=\{0,n\}\cup[C,T-C]\cup\{T-n,T\}
 \end{equation}
 (\Cref{lem:start,lem:step}). With this description of the sums, \eqref{eq:gap} gives the next block, and induction on
-the blocks proves the conjecture.
+the blocks proves the conjecture. \Cref{lem:start} gives the first $n+1$ terms for every $d<n$, and for $n\ge10$ and
+$d\in\{n-7,n-6\}$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$ (\Cref{rem:empty}), so for these $d$
+the new input is \eqref{eq:gap} at $r\in\{0,1,K-2,K-1\}$ together with \Cref{lem:start}.
 
 \section{The sums of distinct terms at the end of a block}
 
@@ -281,14 +283,14 @@ and suggest that there may be only finitely many triples $(n,d,r)$ for which $D_
 $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for $r=2$.
 
 For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $d=n-7$ and
-$d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, let $e=d-1\le n-7$ as in the proof of \Cref{lem:Cm}(a), and write
+$d=n-6$ the left side of \eqref{eq:gap} can be non-empty only for $r\in\{0,1,K-2,K-1\}$. To see this, let $e=d-1\le n-7$ as in the proof of \Cref{lem:Cm}(a), and write
 $g(r)=h(r)-l(r+1)-(C-1)$; by the reflection of \Cref{sec:reflect} it is enough to show $g(r)>0$ for
 $2\le r\le n/2-1$. If $e\le r$, then $e$ is not among the $r$ largest elements of $[0,n-1]$, so
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+2}2-e$, and $g(r)=r(n-2-r)-n-1$. If $r<e\le n-1-r$, then
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-1-r)-(n+d-1)\ge r(n-1-r)-(2n-7)$. If $e\ge n-r$,
 then $r\ge n-e\ge 7$, $h(r)=r(n-1)-\binom r2-e+(n-1-r)$ and $l(r+1)=\binom{r+1}2$, and $g(r)=r(n-2-r)-(2d-1)\ge
 r(n-2-r)-(2n-13)$; here $n\ge 2r+2\ge 16$. In each case the lower bound is a concave function of $r$, and it is
-positive at both ends of the range of $r$ allowed in that case when $n\ge 10$. For $(n,d)$ equal to $(8,2)$,
+positive at $r=2$ (at $r=7$ in the third case) and at $r=n/2-1$ when $n\ge 10$, hence on the whole range. For $(n,d)$ equal to $(8,2)$,
 $(9,2)$ or $(9,3)$ the first case gives $g(2)=n-9\le 0$, so $D_2\cup D_3$ is not an interval.
 \end{remark}
 
