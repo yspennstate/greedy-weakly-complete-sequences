@@ -45,7 +45,7 @@ the sums of $r$ terms of a block, for which we give a short proof.
 \section{Introduction}
 
 An increasing sequence of positive integers is \emph{weakly complete} if every sufficiently large integer is a sum of
-distinct terms of the sequence (the term is Honsberger's \cite{Hon}; see also \cite{KP}). Given two initial terms, the greedy algorithm produces such a sequence:
+distinct terms of the sequence (we follow the terminology of Honsberger \cite{Hon}; see also \cite{KP}). Given two initial terms, the greedy algorithm produces such a sequence:
 once $a_1<\dots<a_k$ are known, $a_{k+1}$ is the least integer greater than $a_k$ that is not a sum of distinct terms
 among $a_1,\dots,a_k$. Every integer greater than $a_2$ is then a sum of distinct terms. For example, the initial
 terms $5,8$ give
@@ -61,14 +61,14 @@ Let $1\le d<n$ and let $(a_k)$ be the greedy sequence with $a_1=n$ and $a_2=n+d$
 \[
 I\cup J\cup\bigcup_{i\ge 1}\bigl(an^i+S\bigr),
 \]
-where $I=\{n,n+d\}$, $J=\{n+d+1,\dots,2n+d-1\}$,
+where the constant $a$ is not a term of the sequence, $I=\{n,n+d\}$, $J=\{n+d+1,\dots,2n+d-1\}$,
 \[
 a=\frac{3n^2+(2d-3)n-4d+2}{2(n-1)},\qquad c=\frac{n^2-n-2(d-1)}{2(n-1)},
 \]
 and $S=\{-c+j:\ 0\le j\le n-1,\ j\ne d-1\}$.
 \end{conjecture}
 
-The case $d=1$ is \cite[Theorem~2]{KP}, in an equivalent form, and Fox and Knapp proved the conjecture for $2\le d\le n-8$
+The case $d=1$ is \cite[Theorem~2]{KP}, in the equivalent form where the union starts at $i=0$, whose block is $J$; Fox and Knapp proved the conjecture for $2\le d\le n-8$
 \cite[Theorem~1]{FK}. For $n=3$ and $d=2$ the terms agree with OEIS A072134 \cite{OEIS}, where this description is
 stated without proof. We prove the remaining cases, by an argument that covers every $2\le d<n$.
 
@@ -107,8 +107,8 @@ and one integer of $[C,M-1]$ fill the interval
 D_r=[\,rM+l(r)+C,\ (r+1)M+h(r)-1\,],
 \]
 and the argument needs $D_r\cup D_{r+1}$ to be an interval for $2\le r\le K-3$. The bound $d\le n-8$ comes from
-this requirement at $d=2$. Bounds on $d$ are also used for three pairs of sets lying between $D_1$ and $D_2$, and the
-first $n+1$ terms are treated for $d\le n-5$. For $n-5\le d\le n-1$ and $d\ge 4$ the requirement fails: the integers
+this requirement at $d=2$. Further bounds on $d$ enter between $D_1$ and $D_2$, and the first $n+1$ terms are treated
+for $d\le n-5$. For $n\ge 6$, $d\ge 4$ and $n-5\le d\le n-1$ the requirement fails: the integers
 of $3M+[h(2),\,l(3)+C-1]$ lie strictly between $D_2$ and $D_3$ (\Cref{rem:empty}).
 
 Those integers are nevertheless sums of distinct terms. The integers strictly between $D_r$ and $D_{r+1}$ are those
@@ -119,8 +119,8 @@ l(r+1)\le h(r)\qquad\text{and}\qquad h(r+1)-l(r+1)\ge n-1 .
 So these integers lie in $(r+1)M+[l(r+1),h(r+1)]$ or in $n$ plus that interval. Every integer of
 $(r+1)M+[l(r+1),h(r+1)]$ is a sum of $r+1$ terms of the block, or of $r$ terms of the block and all earlier terms
 other than $n$, whose sum is $T-n$ (Fox and Knapp \cite[Section~3]{FK}; \Cref{lem:Cm}(a)). Adding the term $n$
-covers the second interval. The last gap, $r=K-1$, is the first one under the reflection $x\mapsto\sigma+C-1-x$
-(\Cref{sec:reflect}). This gives
+covers the second interval. For $r=K-1$ the inclusion follows from the case $r=0$ by the reflection
+$x\mapsto\sigma+C-1-x$ (\Cref{sec:reflect}). This gives
 \begin{equation}\label{eq:gap}
 [h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K)
 \end{equation}
@@ -141,8 +141,8 @@ Let $1\le d<n$. The greedy sequence begins with $n,C,C+1,\dots,C+n-1$. If $A_0$ 
 $T_0=n+nC+\binom n2$ is their sum, then $\Sigma(A_0)=R_{T_0}$.
 \end{lemma}
 
-The first statement and the intervals $[l_r,u_r]$ of the proof are in \cite[Section~3]{FK}, where the base step
-requires $d\le n-5$.
+The first statement and the description of the sums of $r$ of the terms $C,\dots,C+n-1$ are in
+\cite[Section~3]{FK}, where the first $n+1$ terms are treated for $d\le n-5$.
 
 \begin{proof}
 Every sum of two or more distinct terms that includes a term at least $C$ is at least $C+n$. So for $C\le x\le
@@ -152,19 +152,19 @@ chosen in turn.
 A sum using $r$ of the terms $C,\dots,C+n-1$ has the form $rC+q$, where $q$ is a sum of $r$ distinct elements of
 $\{0,\dots,n-1\}$. These $q$ fill the interval $[\binom r2,\binom r2+r(n-r)]$: from any $r$-subset other than the
 largest, some element can be raised by one without leaving $\{0,\dots,n-1\}$ or meeting another element. Write
-$l_r=rC+\binom r2$ and $u_r=l_r+r(n-r)$. Adding the optional term $n$, the sums with exactly $r$ terms from the interval
-form $[l_r,u_r]\cup[l_r+n,u_r+n]$. For $1\le r\le n-1$ we have $u_r-l_r\ge n-1$, so this union is the interval
-$[l_r,u_r+n]$. Moreover
+$\lambda_r=rC+\binom r2$ and $\mu_r=\lambda_r+r(n-r)$. Adding the optional term $n$, the sums with exactly $r$ terms from the interval
+form $[\lambda_r,\mu_r]\cup[\lambda_r+n,\mu_r+n]$. For $1\le r\le n-1$ we have $\mu_r-\lambda_r\ge n-1$, so this union is the interval
+$[\lambda_r,\mu_r+n]$. Moreover
 \[
-l_{r+1}-(u_r+n)-1=d-1-r(n-1-r)\le 0\qquad(1\le r\le n-2),
+\lambda_{r+1}-(\mu_r+n)-1=d-1-r(n-1-r)\le 0\qquad(1\le r\le n-2),
 \]
-because $r(n-1-r)\ge n-2\ge d-1$. So the sets $[l_r,u_r+n]$ for $1\le r\le n-1$ together form the interval $[l_1,u_{n-1}+n]$. Here
-$l_1=C$, and $u_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ contributes $\{0,n\}$, and $r=n$ contributes
+because $r(n-1-r)\ge n-2\ge d-1$. So the sets $[\lambda_r,\mu_r+n]$ for $1\le r\le n-1$ together form the interval $[\lambda_1,\mu_{n-1}+n]$. Here
+$\lambda_1=C$, and $\mu_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ contributes $\{0,n\}$, and $r=n$ contributes
 $\{T_0-n,T_0\}$.
 \end{proof}
 
 \begin{lemma}\label{lem:Q}
-Any two consecutive elements of $Q_r$ differ by at most $2$.
+Let $1\le d<n$ and $0\le r\le K$. Any two consecutive elements of $Q_r$ differ by at most $2$.
 \end{lemma}
 
 \begin{proof}
@@ -184,10 +184,10 @@ number exceeds $M+n-1$.
 
 \begin{proof}
 Since $T-C=M-1$, $T-n=M+d-1$ and $T=M+C-1\ge M+n$, the only element of $R_T$ in $[M,M+n-1]$ is $M+d-1$, and every
-integer in $[C,M-1]$ lies in $R_T$. Let $x$ be a new term in $[M,M+n-1]$. Then $x$ plus a positive element of $R_T$ is
-at least $M+n$, and the sum of two new terms is at least $2M>M+n-1$. So no new term creates a sum in
+integer in $[C,M-1]$ lies in $R_T$. Let $x$ be a term chosen in $[M,M+n-1]$. Then $x$ plus a positive element of $R_T$ is
+at least $M+n$, and the sum of two terms chosen there is at least $2M>M+n-1$. So no such term creates a sum in
 $[M,M+n-1]$, and the greedy algorithm chooses every integer of $[M,M+n-1]$ other than $M+d-1$. These are the elements
-of $M+W$.
+of $M+W$; we call them the new terms.
 
 Next we show that $\Sigma(A')=R_{T'}$, where $A'=A\cup(M+W)$. A subset of $A'$ that uses $r$ of the new terms has sum
 $rM+q+s$ with $q\in Q_r$ and $s\in R_T$. Hence
@@ -275,13 +275,13 @@ conjecture. The case $d=1$ is \cite[Theorem~2]{KP}.
 
 \begin{remark}\label{rem:empty}
 The left side of \eqref{eq:gap} is the set of integers strictly between $D_r$ and $D_{r+1}$, shifted by $(r+1)M$, so
-$D_r\cup D_{r+1}$ is an interval exactly when it is empty. Fox and Knapp expect the formula to hold for all $d<n$,
+$D_r\cup D_{r+1}$ is an interval exactly when the left side of \eqref{eq:gap} is empty. Fox and Knapp expect the conjecture to hold for all $d<n$,
 and suggest that there may be only finitely many triples $(n,d,r)$ for which $D_r\cup D_{r+1}$ is not an interval
 \cite[Section~3]{FK}. There are infinitely many: if $n-5\le d\le n-1$ and $d\ge 4$, then $l(3)=3$ and
 $h(2)\le 2n-3\le n+d+2=l(3)+C-1$, so the left side of \eqref{eq:gap} is not empty for $r=2$.
 
 For $n\ge 10$ and $d\le n-6$ the left side of \eqref{eq:gap} is empty for $2\le r\le K-3$, so for $d=n-7$ and
-$d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, write $e=d-1\le n-7$ and
+$d=n-6$ the inclusion has content only for $r\in\{0,1,K-2,K-1\}$. To see this, let $e=d-1\le n-7$ as in the proof of \Cref{lem:Cm}(a), and write
 $g(r)=h(r)-l(r+1)-(C-1)$; by the reflection of \Cref{sec:reflect} it is enough to show $g(r)>0$ for
 $2\le r\le n/2-1$. If $e\le r$, then $e$ is not among the $r$ largest elements of $[0,n-1]$, so
 $h(r)=r(n-1)-\binom r2$ and $l(r+1)=\binom{r+2}2-e$, and $g(r)=r(n-2-r)-n-1$. If $r<e\le n-1-r$, then
