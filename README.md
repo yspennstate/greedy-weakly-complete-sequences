@@ -29,8 +29,8 @@ E  left side non-empty at r=2, 4<=d, n-5<=d<=n-2, 10<=n<=150: 564 pairs, excepti
 F  Lemma 3.1 (a) and (b), 2<=d<n<=60: 1711 pairs, failures (a) 0 (b) 0
 ```
 
-Part A checks the inclusion (4) of the paper for all 1 <= d < n <= 31 and for n - 7 <= d <= n - 1 with
+Part A checks the inclusion (3) of the paper for all 1 <= d < n <= 31 and for n - 7 <= d <= n - 1 with
 32 <= n <= 80. Part B consists of two altered conditions that must fail, and do.
 Part C computes the greedy sequence directly and compares it with the formula. Part D starts one block from the set
-R_T for many values of T and compares the terms and the new set of sums with Lemma 2.3. Part E checks the two statements of Remark 3.2 on the left side of (4) for 10 <= n <= 150. Part F checks parts (a)
-and (b) of Lemma 3.1, which give (4) for r <= K-2, for 2 <= d < n <= 60. The proof itself does not depend on a computation.
+R_T for many values of T and compares the terms and the new set of sums with Lemma 2.3. Part E checks the two statements of Remark 3.2 on the left side of (3) for 10 <= n <= 150. Part F checks parts (a)
+and (b) of Lemma 3.1, which give (3) for r <= K-2, for 2 <= d < n <= 60. The proof itself does not depend on a computation.
