@@ -120,7 +120,8 @@ So these integers lie in $(r+1)M+[l(r+1),h(r+1)]$ or in $n$ plus that interval. 
 $(r+1)M+[l(r+1),h(r+1)]$ is a sum of $r+1$ terms of the block, or of $r$ terms of the block and all earlier terms
 other than $n$, whose sum is $T-n$ (Fox and Knapp \cite[Section~3]{FK}; \Cref{lem:Cm}(a)). Adding the term $n$
 covers the second interval. For $r=K-1$ the inclusion follows from the case $r=0$ by the reflection
-$x\mapsto\sigma+C-1-x$ (\Cref{sec:reflect}). This gives
+$x\mapsto\sigma+C-1-x$ (\Cref{sec:reflect}); in their range Fox and Knapp cover these integers by explicit
+representations \cite[Section~3, pp.~11--12]{FK}. This gives
 \begin{equation}\label{eq:gap}
 [h(r),\ l(r+1)+C-1]\ \subset\ \bigl(Q_r+\{d-1,\,C-1\}\bigr)\cup\bigl(Q_{r+1}+\{0,n\}\bigr)\qquad(0\le r<K)
 \end{equation}
@@ -166,7 +167,7 @@ $\lambda_1=C$, and $\mu_{n-1}+n=T_0-C$ by a direct computation. The case $r=0$ c
 $\{T_0-n,T_0\}$.
 \end{proof}
 
-The next lemma is a weak form of \cite[Lemma~2]{FK}; unlike that lemma it includes the case $d=1$.
+For $2\le d<n$ the next lemma follows from \cite[Lemma~2]{FK}; we include the short proof for completeness.
 
 \begin{lemma}\label{lem:Q}
 Let $1\le d<n$ and $0\le r\le K$. Any two consecutive elements of $Q_r$ differ by at most $2$.
@@ -188,6 +189,7 @@ number exceeds $M+n-1$.
 \end{lemma}
 
 \begin{proof}
+We follow the argument of \cite[Section~3, p.~13]{FK}, written in terms of $R_T$.
 Since $T-C=M-1$, $T-n=M+d-1$ and $T=M+C-1\ge M+n$, the only element of $R_T$ in $[M,M+n-1]$ is $M+d-1$, and every
 integer in $[C,M-1]$ lies in $R_T$. Let $x$ be a term chosen in $[M,M+n-1]$. Then $x$ plus a positive element of $R_T$ is
 at least $M+n$, and the sum of two terms chosen there is at least $2M>M+n-1$. So no such term creates a sum in
