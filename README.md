@@ -2,6 +2,8 @@
 
 Yitzchak Shmalo
 
+Zenodo: https://doi.org/10.5281/zenodo.24433228
+
 Fix integers 1 <= d < n. The greedy sequence with x_1 = n, x_2 = n + d takes as each later term the least integer
 larger than the previous one that is not a sum of distinct earlier terms. Paul conjectured an explicit
 formula for this sequence (Conjecture B of Knapp and Paul, Integers 2012). Knapp and Paul proved the case d = 1, and Fox and
