@@ -25,7 +25,7 @@ B  control (translate d-1 dropped): pairs failing 435 of 435
 C  greedy sequence, three blocks, n<=20: 190 pairs, failures 0
 D  one block from R_T, n<=12, 400 values of T each: 26400 cases, wrong terms 0 wrong sets 0
 E  left side of (eq:gap) empty for 2<=r<=K-3, d<=n-6, 10<=n<=150: 10434 pairs, exceptions 0
-E  left side non-empty at r=2, 4<=d, n-5<=d<=n-2, 10<=n<=150: 564 pairs, exceptions 0
+E  left side non-empty at r=2, 4<=d, n-5<=d<=n-1, 10<=n<=150: 705 pairs, exceptions 0
 F  Lemma 3.1 (a) and (b), 2<=d<n<=60: 1711 pairs, failures (a) 0 (b) 0
 ```
 
